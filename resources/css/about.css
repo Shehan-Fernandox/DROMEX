@@ -1,0 +1,174 @@
+h1 {
+            text-align: center;
+            margin-top: 20px;
+            text-transform: capitalize;
+        }
+
+        .about-description {
+            margin-top: 20px;
+
+        }
+
+        .img {
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        .about-section {
+            margin-top: 50px;
+            background-color: #f5f5f5;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
+            border-radius: 20px;
+            margin: 0;
+            padding: 50px;
+        }
+
+
+        .about-card {
+            height: 130px;
+            width: 130px;
+            background-color: #f5f5f5;
+            margin: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
+            border-radius: 20px;
+            padding: 0;
+
+        }
+
+        .about-card:hover {
+            transform: scale(1.1);
+            /* animation */
+            transition: transform 0.3s ease;
+            background-color: #FF9B00;
+        }
+
+        /* what we do wesction */
+        .what-do-section {
+            background-color: #f5f5f5;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
+            border-radius: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .what-do {
+            margin-top: 50px;
+
+            max-height: fit-content;
+            max-width: fit-content;
+        }
+
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateX(200px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .what-do p {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        /* delay for each paragraph */
+        .what-do p:nth-of-type(1) {
+            animation-delay: 0.3s;
+        }
+
+        .what-do p:nth-of-type(2) {
+            animation-delay: 0.6s;
+        }
+
+
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateX(200px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .what-do img {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        /* delay for each paragraph */
+        .what-do img:nth-of-type(1) {
+            animation-delay: 0.3s;
+        }
+
+        .what-do img:nth-of-type(2) {
+            animation-delay: 0.6s;
+        }
+
+        /* team section */
+        .team-section {
+            background-color: #f5f5f5;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
+            border-radius: 20px;
+            width: 800px;
+            height: 300px;
+        }
+
+        .team-img {
+            background-size: cover;
+            width: 50%;
+            height: 50%;
+            padding: 0;
+            align-content: flex-end;
+        }
+
+        /* product card */
+        .card-body {
+            position: relative;
+            background-color: #f5f5f5;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
+            border-radius: 20px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        /* Hover animation for the card */
+        .card-body:hover {
+            background: linear-gradient(to top, #909090ff, #f5f5f5);
+            transform: scale(1.05);
+        }
+
+        /* Make the image fill and fit nicely */
+        .card-body img {
+            display: block;
+            width: 250px;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        /* Position button in the center (hidden by default) */
+        .card-body button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Show button when hovered */
+        .card-body:hover button {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
