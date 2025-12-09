@@ -9,12 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
     <style>
+        
         .product-title {
             font-family: 'Poppins';
             text-transform: uppercase;
             color: #ff0051ff;
             text-align: center;
-            margin-top: 20px;
+           
             font-weight: bold;
         }
 
@@ -155,9 +156,13 @@
 
 <body>
 
-    @include('layouts.adminNav')
+    <head>
+        @include('layouts.adminNav')
+    </head>
 
-    <h4 class="product-title">products</h4>
+
+
+    <h4 class="product-title" style="margin-top: 150px;">products</h4>
 
     <div class="container-fluid mt-4">
         <div class="product-summey-content">
@@ -169,7 +174,7 @@
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="product-summery-card">
-                        <h5>Total Users 200</h5>
+                        <h5>Total Users {{$users_count}}</h5>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
@@ -187,28 +192,7 @@
 
     </div>
 
-    <!-- <div class="container-fluid">
 
-        <div class="row mt-5">
-            <div class="col-12 col-md-4 manage-product">
-                <div class="product-card">
-                    <h5>add product</h5>
-                </div>
-                <div class="product-card">
-                    <h5>add product</h5>
-                </div>
-                <div class="product-card">
-                    <h5>add product</h5>
-                </div>
-                <div class="product-card">
-                    <h5>add product</h5>
-                </div>
-            </div>
-            <div class="col-12 col-md-8">
-                
-            </div>
-        </div>
-    </div> -->
     <!-- add product -->
     <div class="container-fluid mt-3">
         <div class="row">
@@ -259,11 +243,7 @@
                     <tbody>
                         @foreach($products as $product)
                         <tr>
-                            <th scope="row">
-                                <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top"
-                                    alt="..." style="width: 150px;height: 150px;">
-                            </th>
-
+                            <td><img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" alt="" class="img-fluid" style="width: 200px;height: auto;" ></td>
                             <td>{{$product->product_name}}</td>
                             <td>{{$product->brand}}</td>
                             <td>LKR {{$product->product_price}} /=</td>

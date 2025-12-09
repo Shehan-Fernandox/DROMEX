@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('fly_time');
             $table->string('camera_resolution');
             $table->string('battery_capacity');
+            $table->string('aircraft');
             $table->timestamps();
         });
     }

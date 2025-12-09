@@ -144,7 +144,7 @@
       <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
         <div class="card" style="width: 18rem;">
           <div class="card-img">
-            <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
+            <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top" alt="..." style="width: 300px;height:300px;">
           </div>
           <div class="card-body" style="text-align: center;">
             <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>

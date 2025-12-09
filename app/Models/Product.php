@@ -19,6 +19,7 @@ class Product extends Model
         'product_weight',
         'fly_time',
         'camera_resolution',
-        'battery_capacity'
+        'battery_capacity',
+        'aircraft'
     ];
 }

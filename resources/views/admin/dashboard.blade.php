@@ -66,13 +66,7 @@
     height: 300px;
   }
 
-  .overflow-background {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #adadadff;
-    border-radius: 10px;
-  }
+  
 </style>
 
 <body>
@@ -80,7 +74,7 @@
 @include('layouts.adminNav')
   
 
-  <div>
+  <div style="margin-top: 100px;">
     <h4>dashboard</h4>
   </div>
 
