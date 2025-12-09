@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,8 +14,9 @@ class ProductController extends Controller
     public function index()
     {
         $product_count = Product::count();
+        $users_count = User::count();
         $products = Product::all();
-        return view('admin.addProducts.index', compact('products','product_count'));
+        return view('admin.addProducts.index', compact('products','product_count','users_count'));
     }
 
     /**
@@ -30,19 +32,32 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-         Product::create([
-            'product_name' => $request->product_name,
-            'brand' => $request->brand,
-            'short_description' => $request->short_description,
-            'fully_description' => $request->fully_description,
-            'product_price' => $request->product_price,
-            'stock_quantity' => $request->stock_quantity,
-            'product_weight' => $request->product_weight,
-            'fly_time' => $request->fly_time,
-            'camera_resolution' => $request->camera_resolution,
-            'battery_capacity' => $request->battery_capacity,
+
+         $request->validate([
+            'product_name' => 'required',
+            'brand' => 'required',
+            'short_description' => 'required',
+            'fully_description' => 'required',
+            'stock_quantity' => 'required',
+            'product_weight' => 'required',
+            'fly_time' => 'required',
+            'camera_resolution' => 'required',
+            'battery_capacity' => 'required',
+            'aircraft' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
-        return back();
+
+        $data = $request->all();
+
+        if ($request->hasFile('aircraft')) {
+            $imageName = time() . '_' . $request->aircraft->getClientOriginalName();
+            $request->aircraft->move(public_path('upload_aircraft'), $imageName);
+            $data['aircraft'] = $imageName;
+        }
+
+        Product::create($data);
+         return back();
+
+       
     }
 
     /**

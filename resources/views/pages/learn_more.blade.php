@@ -114,7 +114,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-6" style="display: flex;flex-direction: column;justify-content: center;">
-                        <img src="{{ asset('images/drones/mavic 4 pro.png') }}" alt="..." class="img-fluid mt-5">
+                        <div style="display: flex;justify-content: center;">
+                            <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" alt="..." class="img-fluid mt-5" style="width: 400px;height: auto;">
+                        </div>
                         <div class="product-name">
                             <div class="line"></div>
                             <div class="name">
@@ -139,8 +141,8 @@
                     </div>
                     <div class="col-12 col-md-6" style="display: flex;flex-direction: column;text-align: justify;margin-top: 100px;">
                         {!! str_replace('.', '.<br><br>',$product->fully_description) !!}
-                       
-                        
+
+
                     </div>
                 </div>
             </div>
@@ -185,7 +187,7 @@
                 </div>
             </div>
         </div>
-         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-6" style="display: flex;flex-direction: column;justify-content: center;">
@@ -224,8 +226,8 @@
                     </div>
                 </div>
             </div>
-         </div>
-            
+        </div>
+
 
     </div>
 

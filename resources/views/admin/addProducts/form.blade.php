@@ -12,7 +12,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row g-3" method="post" action="{{ route('addProducts.store') }}">
+                <form class="row g-3" method="post" action="{{ route('addProducts.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-6">
                         <label for="productName" class="form-label">Product Name</label>
@@ -54,11 +54,11 @@
                         <label for="battery" class="form-label">Battery Capacity</label>
                         <input type="text" class="form-control" id="battery" name="battery_capacity">
                     </div>
-                    <!-- <div class="col-md-12">
+                     <div class="col-md-12">
                         <label for="aircraft" class="form-label">Aircraft</label>
                         <input type="file" name="aircraft">
                     </div>
-                    <div class="col-md-6">
+                    <!--<div class="col-md-6">
                         <label for="aircraft" class="form-label">Aircraft Rc</label>
                         <input type="file" name="aircraft_rc">
                     </div>
