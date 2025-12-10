@@ -14,10 +14,10 @@
             background-position: center;
         } */
 
-        label {
+        label{
             color: #151515ff;
             font-weight: bold;
-
+            
         }
 
 
@@ -42,7 +42,7 @@
 
         }
 
-
+       
 
         .line {
             width: auto;
@@ -59,71 +59,57 @@
 
 
     <div class="container form-container">
-        <form class="row g-3" method="POST" action="{{ route('addProducts.update', $addProduct->id) }}" enctype="multipart/form-data">
+        <form class="row g-3" method="post" action="{{ route('addProducts.store') }}" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
             <h3>add product</h3>
-            <div class="col-md-12">
-
-                <div>
-                    @if ($addProduct->aircraft)
-                    <img src="{{ asset('upload_aircraft/'.$addProduct->aircraft) }}" style="width: 200px;height: auto;">
-                    @endif
-                </div>
-
-            </div>
             <div class="col-md-6">
                 <label for="productName" class="form-label">Product Name</label>
-                <input type="text" class="form-control" id="productName" name="product_name" value="{{ $addProduct->product_name }}">
+                <input type="text" class="form-control" id="productName" name="product_name">
             </div>
             <div class="col-md-6">
                 <label for="brand" class="form-label">Product Brand</label>
-                <input type="text" class="form-control" id="brands" name="brand" value="{{ $addProduct->brand }}">
+                <input type="text" class="form-control" id="brands" name="brand">
             </div>
             <div class="col-md-6">
                 <label for="short" class="form-label">Short Description</label>
-                <input type="text" class="form-control" id="short" name="short_description" value="{{ $addProduct->short_description }}">
+                <input type="text" class="form-control" id="short" name="short_description">
             </div>
             <div class="col-md-6">
                 <label for="quantity" class="form-label">Stock Quantity</label>
-                <input type="text" class="form-control" id="quantity" name="stock_quantity" value="{{ $addProduct->stock_quantity }}">
+                <input type="text" class="form-control" id="quantity" name="stock_quantity">
             </div>
             <div class="col-12">
                 <label for="fully" class="form-label">Fully Description</label>
-                <textarea class="form-control" id="fully" name="fully_description" id="" rows="5">{{ $addProduct->fully_description }}</textarea>
+                <textarea class="form-control" id="fully" name="fully_description" id="" rows="5"></textarea>
             </div>
             <div class="col-md-6">
                 <label for="Price" class="form-label">Price</label>
-                <input type="text" class="form-control" id="Price" name="product_price" value="{{ $addProduct->product_price }}">
+                <input type="text" class="form-control" id="Price" name="product_price">
             </div>
             <div class="col-md-6">
                 <label for="weight" class="form-label">Weight</label>
-                <input type="text" class="form-control" id="weight" name="product_weight" value="{{ $addProduct->product_weight }}">
+                <input type="text" class="form-control" id="weight" name="product_weight">
             </div>
             <div class="col-md-6">
                 <label for="fly_time" class="form-label">Max Fly Time</label>
-                <input type="text" class="form-control" name="fly_time" value="{{ $addProduct->fly_time }}">
+                <input type="text" class="form-control" name="fly_time">
             </div>
             <div class="col-md-6">
                 <label for="resoloution" class="form-label">Camera Resolution</label>
-                <input type="text" class="form-control" id="resoloution" name="camera_resolution" value="{{ $addProduct->camera_resolution }}">
+                <input type="text" class="form-control" id="resoloution" name="camera_resolution">
             </div>
             <div class="col-md-6">
                 <label for="battery" class="form-label">Battery Capacity</label>
-                <input type="text" class="form-control" id="battery" name="battery_capacity" value="{{ $addProduct->battery_capacity }}">
+                <input type="text" class="form-control" id="battery" name="battery_capacity">
             </div>
             <div class="col-md-6">
                 <label for="battery" class="form-label">Battery Capacity</label>
-                <input type="text" class="form-control" id="battery" name="battery_capacity" value="{{ $addProduct->battery_capacity }}">
+                <input type="text" class="form-control" id="battery" name="battery_capacity">
             </div>
-
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <label for="aircraft" class="form-label">Aircraft</label>
                 <input type="file" name="aircraft">
             </div>
-
-
-
             <!-- <div class="col-md-4">
                         <label for="aircraft" class="form-label">RC</label>
                         <input type="file" name="aircraft">
@@ -149,7 +135,7 @@
             </div> -->
 
             <div class="col-12">
-                <button type="submit" class="btn" style="width: 200px;border:2px solid #C70039;padding:10px;border-radius: 20px;">Update Aircraft</button>
+                <button type="submit" class="btn" style="width: 200px;border:2px solid #C70039;padding:10px;border-radius: 20px;">Add Aircraft</button>
             </div>
         </form>
     </div>

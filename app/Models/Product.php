@@ -22,4 +22,9 @@ class Product extends Model
         'battery_capacity',
         'aircraft'
     ];
+
+    public function orders() {
+    return $this->hasMany(Order::class);
+}
+
 }

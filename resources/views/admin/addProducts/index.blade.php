@@ -9,13 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        
         .product-title {
             font-family: 'Poppins';
             text-transform: uppercase;
             color: #ff0051ff;
             text-align: center;
-           
+
             font-weight: bold;
         }
 
@@ -200,8 +199,8 @@
                 <div class="add-product">
                     <h4>Add new product</h4>
                     <p>Add a new drone to your product catalog by entering its specifications, pricing, features, and images.</p>
-                    <!-- <a href="">add product</a> -->
-                    @include('admin.addProducts.form')
+                    <a href="{{route('addProducts.create')}}">add product</a>
+
                 </div>
                 <!-- <img src="{{asset('images/admin/addProduct.png')}}" alt="" style="width: fit-content;object-fit: cover;"> -->
             </div>
@@ -235,7 +234,7 @@
                             <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">Aircraft Name</th>
                             <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">Aircraft Brand</th>
                             <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">Aircraft Price</th>
-                            <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle; width: 200px;">Action</th>
+                            <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle; width: 250px;">Action</th>
                         </tr>
 
                     </thead>
@@ -243,7 +242,7 @@
                     <tbody>
                         @foreach($products as $product)
                         <tr>
-                            <td><img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" alt="" class="img-fluid" style="width: 200px;height: auto;" ></td>
+                            <td><img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" alt="" class="img-fluid" style="width: 200px;height: auto;"></td>
                             <td>{{$product->product_name}}</td>
                             <td>{{$product->brand}}</td>
                             <td>LKR {{$product->product_price}} /=</td>
@@ -251,7 +250,13 @@
                             <td>
                                 <div style="display: flex;justify-content: space-between;">
                                     <a href="{{route('addProducts.edit', $product->id)}}" class="btn btn-warning" data-bs-target="#exampleModal" style="width: fit-content;font-weight: bold;">update</a>
-                                    <a href="" class="btn btn-danger" style="width: fit-content;font-weight: bold;">delete</a>
+                                    <!-- <a href="" class="btn btn-success" style="width: fit-content;font-weight: bold;">view</a> -->
+                                    <form action="{{ route('addProducts.destroy', ['addProduct' => $product->id]) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+
                                 </div>
                             </td>
                         </tr>

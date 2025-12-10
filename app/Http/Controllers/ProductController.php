@@ -16,7 +16,7 @@ class ProductController extends Controller
         $product_count = Product::count();
         $users_count = User::count();
         $products = Product::all();
-        return view('admin.addProducts.index', compact('products','product_count','users_count'));
+        return view('admin.addProducts.index', compact('products', 'product_count', 'users_count'));
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.addProducts.create');
     }
 
     /**
@@ -33,7 +33,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-         $request->validate([
+        $request->validate([
             'product_name' => 'required',
             'brand' => 'required',
             'short_description' => 'required',
@@ -55,9 +55,7 @@ class ProductController extends Controller
         }
 
         Product::create($data);
-         return back();
-
-       
+        return redirect()->route('addProducts.index');
     }
 
     /**
@@ -74,24 +72,59 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $addProduct)
     {
-        return view('admin.addProducts.update');
+        return view('admin.addProducts.update',compact('addProduct'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, Product $addProduct)
+{
+    $request->validate([
+        'product_name' => 'required|string|max:10|min:5',
+        'brand' => 'required|string|min:3|max:3',
+        'short_description' => 'required',
+        'fully_description' => 'required',
+        'stock_quantity' => 'required',
+        'product_weight' => 'required|string',
+        'fly_time' => 'required',
+        'camera_resolution' => 'required',
+        'battery_capacity' => 'required',
+        'aircraft' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+    ]);
+
+    $data = $request->all();
+
+    if ($request->hasFile('aircraft')) {
+        if ($addProduct->aircraft && file_exists(public_path('upload_aircraft/' . $addProduct->aircraft))) {
+            unlink(public_path('upload_aircraft/' . $addProduct->aircraft));
+        }
+
+        $imageName = time() . '_' . $request->aircraft->getClientOriginalName();
+        $request->aircraft->move(public_path('upload_aircraft'), $imageName);
+        $data['aircraft'] = $imageName;
     }
+
+    $addProduct->update($data);
+
+    return redirect()->route('addProducts.index');
+}
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+   public function destroy(Product $addProduct)
+{
+    if ($addProduct->aircraft && file_exists(public_path('upload_aircraft/' . $addProduct->aircraft))) {
+        unlink(public_path('upload_aircraft/' . $addProduct->aircraft));
     }
+
+    $addProduct->delete();
+
+    return redirect()->route('addProducts.index')->with('success', 'Product deleted successfully.');
+}
+
 }
