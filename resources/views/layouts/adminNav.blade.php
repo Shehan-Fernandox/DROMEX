@@ -59,7 +59,7 @@
     position: fixed;
     height: 100px;
     width: 100%;
-    background-color: #0F0E0E;
+    background-color: #222831;
     display: flex;
     justify-content: space-between;
     top: 0;
@@ -92,7 +92,7 @@
     </button>
     </div>
 
-    <div  style="display: flex;justify-content: center;color: #FF9B00;align-items: center;text-align: center;padding:10px;text-transform: capitalize;"><h1>dromex admin panel</h1></div>
+    <div  style="display: flex;justify-content: center;color: #FF9B00;align-items: center;text-align: center;padding:10px;text-transform: capitalize;"><h1></h1></div>
 
     <div style="display: flex;justify-content: center;align-items: center;gap:10px;padding:20px;justify-items: flex-start;">
       <div class="profile">

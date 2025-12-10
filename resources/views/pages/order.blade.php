@@ -265,10 +265,17 @@
                         <input type="text" class="form-control" id="city" name="city">
                     </div>
                     <div class="col-md-4">
-                        <label for="inputState" class="form-label">State</label>
+                        <label for="inputState" class="form-label">Province</label>
                         <select id="inputState" class="form-select">
                             <option selected>Choose...</option>
-                            <option></option>
+                            <option>Central</option>
+                            <option>Eastern</option>
+                            <option>Northern</option>
+                            <option>North Central</option>
+                            <option>North Western</option>
+                            <option>Sabaragamuwa</option>
+                            <option>Southern</option>
+                            <option>Uva</option>
                         </select>
                     </div>
                     <div class="col-md-2">
