@@ -20,11 +20,12 @@ class Product extends Model
         'fly_time',
         'camera_resolution',
         'battery_capacity',
-        'aircraft'
+        'aircraft',
+        'rc',
+        'aircraft_with_rc'
+
     ];
 
-    public function orders() {
-    return $this->hasMany(Order::class);
-}
+  
 
 }

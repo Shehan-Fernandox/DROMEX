@@ -152,7 +152,7 @@
                 <div class="row">
                     <div class="col-12 col-md-6" style="display: flex;flex-direction: column;justify-content: center;">
                         <div style="display: flex;justify-content: center;">
-                            <img src="{{ asset('images/drones/rc.png') }}" alt="..." class="img-fluid mt-5" style="width: 300px;height:300px;">
+                            <img src="{{ asset('upload_aircraft/'.$product->rc) }}" alt="..." class="img-fluid mt-5" style="width: 300px;height:300px;">
                         </div>
                         <div class="product-name">
                             <div class="line"></div>
@@ -192,7 +192,7 @@
                 <div class="row">
                     <div class="col-12 col-md-6" style="display: flex;flex-direction: column;justify-content: center;">
                         <div style="display: flex;justify-content: center;">
-                            <img src="{{ asset('images/drones/camera.png') }}" alt="..." class="img-fluid mt-5" style="width: 300px;height:300px;">
+                            <img src="{{ asset('upload_aircraft/'.$product->aircraft_with_rc) }}" alt="..." class="img-fluid mt-5" style="width: 300px;height:300px;">
                         </div>
                         <div class="product-name">
                             <div class="line"></div>

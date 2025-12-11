@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('camera_resolution');
             $table->string('battery_capacity');
             $table->string('aircraft');
+            $table->string('rc');
+            $table->string('aircraft_with_rc');
             $table->timestamps();
         });
     }
