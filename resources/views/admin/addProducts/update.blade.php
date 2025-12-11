@@ -71,6 +71,19 @@
                     @endif
                 </div>
 
+                <div>
+                    @if ($addProduct->rc)
+                    <img src="{{ asset('upload_aircraft/'.$addProduct->rc) }}" style="width: 200px;height: auto;">
+                    @endif
+                </div>
+
+
+                <div>
+                    @if ($addProduct->aircraft_with_rc)
+                    <img src="{{ asset('upload_aircraft/'.$addProduct->aircraft_with_rc) }}" style="width: 200px;height: auto;">
+                    @endif
+                </div>
+
             </div>
             <div class="col-md-6">
                 <label for="productName" class="form-label">Product Name</label>
@@ -117,12 +130,19 @@
                 <input type="text" class="form-control" id="battery" name="battery_capacity" value="{{ $addProduct->battery_capacity }}">
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <label for="aircraft" class="form-label">Aircraft</label>
                 <input type="file" name="aircraft">
             </div>
 
-
+            <div class="col-md-4">
+                <label for="rc" class="form-label">RC</label>
+                <input type="file" name="rc">
+            </div>
+            <div class="col-md-4">
+                <label for="aircraft_with_rc" class="form-label">Aircraft With RC</label>
+                <input type="file" name="aircraft_with_rc">
+            </div>
 
             <!-- <div class="col-md-4">
                         <label for="aircraft" class="form-label">RC</label>

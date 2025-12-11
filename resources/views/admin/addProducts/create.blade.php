@@ -14,10 +14,10 @@
             background-position: center;
         } */
 
-        label{
+        label {
             color: #151515ff;
             font-weight: bold;
-            
+
         }
 
 
@@ -42,7 +42,7 @@
 
         }
 
-       
+
 
         .line {
             width: auto;
@@ -110,30 +110,15 @@
                 <label for="aircraft" class="form-label">Aircraft</label>
                 <input type="file" name="aircraft">
             </div>
-            <!-- <div class="col-md-4">
-                        <label for="aircraft" class="form-label">RC</label>
-                        <input type="file" name="aircraft">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="aircraft" class="form-label">Aircraft With RC</label>
-                        <input type="file" name="aircraft">
-                    </div> -->
-            <!-- <div class="col-md-6">
-                <label for="inputCity" class="form-label">City</label>
-                <input type="text" class="form-control" id="inputCity">
+            <div class="col-md-4">
+                <label for="rc" class="form-label">RC</label>
+                <input type="file" name="rc">
             </div>
             <div class="col-md-4">
-                <label for="inputState" class="form-label">State</label>
-                <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
+                <label for="aircraft_with_rc" class="form-label">Aircraft With RC</label>
+                <input type="file" name="aircraft_with_rc">
             </div>
-            <div class="col-md-2">
-                <label for="inputZip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
-            </div> -->
-
+           
             <div class="col-12">
                 <button type="submit" class="btn" style="width: 200px;border:2px solid #C70039;padding:10px;border-radius: 20px;">Add Aircraft</button>
             </div>
