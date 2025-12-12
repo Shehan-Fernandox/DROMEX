@@ -84,10 +84,10 @@
     <div class="container">
         <div class="contact mt-5">
             <div class="row">
-                <div class="col-12 col-md-6" style="display: flex; justify-content: center; align-items: center;">
+                <div class="col-12 col-md-6 p-0" style="display: flex; justify-content: center; align-items: center;">
                     <div class="contact-img"></div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 p-0">
                     <div class="contact-content">
                         <h1>contact us</h1>
                         <p>we are here to meet any business need and to promote your company online!</p>

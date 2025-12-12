@@ -58,8 +58,14 @@
 
 
 
-        .learn-card h2,
-        h3 {
+        .learn-card h2 {
+            color: #FF9B00;
+            text-transform: capitalize;
+            text-align: center;
+
+        }
+
+        .learn-card h3 {
             color: #FF9B00;
             text-transform: capitalize;
             text-align: center;
@@ -83,6 +89,43 @@
         .product-name .name {
             text-align: center;
             text-transform: capitalize;
+        }
+
+        @media (max-width: 575px) {
+            .learn-card-content {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+
+            }
+
+            .learn-card {
+                width: 200px;
+                height: 200px;
+                /* background-color: #ff0095; */
+                background-image: url("{{ asset('images/backgrounds/whatsppback.jpg') }}");
+                border-radius: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .learn-card h2 {
+                color: #FF9B00;
+                text-transform: capitalize;
+                text-align: center;
+                font-size: 20px;
+
+            }
+
+            .learn-card h3 {
+                color: #FF9B00;
+                text-transform: capitalize;
+                text-align: center;
+                font-size: 20px;
+            }
+
         }
     </style>
 </head>
@@ -127,15 +170,15 @@
                         <div class="learn-card-content">
                             <div class="learn-card">
                                 <h2>weight</h2>
-                                <h3 style="color: #FF9B00;">{{$product->product_weight}}</h3>
+                                <h3>{{$product->product_weight}}</h3>
                             </div>
                             <div class="learn-card">
                                 <h2>fly time</h2>
-                                <h3 style="color: #FF9B00;">{{$product->fly_time}}</h3>
+                                <h3>{{$product->fly_time}}</h3>
                             </div>
                             <div class="learn-card">
                                 <h2>Distance</h2>
-                                <h3 style="color: #FF9B00;">{{$product->fly_time}}</h3>
+                                <h3>{{$product->fly_time}}</h3>
                             </div>
                         </div>
                     </div>
