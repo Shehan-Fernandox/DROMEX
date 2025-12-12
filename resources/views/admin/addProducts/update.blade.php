@@ -33,22 +33,26 @@
             margin-bottom: 50px;
         }
 
-        .form-container h3 {
-            color: #C70039;
-            text-transform: capitalize;
-            text-align: center;
-            margin-bottom: 20px;
-
-
-        }
-
-
 
         .line {
             width: auto;
             height: 3px;
             background-color: #000;
         }
+
+        .update-img-content{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .update-aircraft-name{
+            text-transform: capitalize;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #C70039;
+        }
+
+        
     </style>
 </head>
 
@@ -62,29 +66,11 @@
         <form class="row g-3" method="POST" action="{{ route('addProducts.update', $addProduct->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <h3>add product</h3>
+
             <div class="col-md-12">
-
-                <div>
-                    @if ($addProduct->aircraft)
-                    <img src="{{ asset('upload_aircraft/'.$addProduct->aircraft) }}" style="width: 200px;height: auto;">
-                    @endif
-                </div>
-
-                <div>
-                    @if ($addProduct->rc)
-                    <img src="{{ asset('upload_aircraft/'.$addProduct->rc) }}" style="width: 200px;height: auto;">
-                    @endif
-                </div>
-
-
-                <div>
-                    @if ($addProduct->aircraft_with_rc)
-                    <img src="{{ asset('upload_aircraft/'.$addProduct->aircraft_with_rc) }}" style="width: 200px;height: auto;">
-                    @endif
-                </div>
-
+                <h1 class="update-aircraft-name">update {{ $addProduct->product_name }}</h1>
             </div>
+
             <div class="col-md-6">
                 <label for="productName" class="form-label">Product Name</label>
                 <input type="text" class="form-control" id="productName" name="product_name" value="{{ $addProduct->product_name }}">
@@ -143,6 +129,27 @@
                 <label for="aircraft_with_rc" class="form-label">Aircraft With RC</label>
                 <input type="file" name="aircraft_with_rc">
             </div>
+
+            <div class="update-img-content">
+                    <div>
+                        @if ($addProduct->aircraft)
+                        <img src="{{ asset('upload_aircraft/'.$addProduct->aircraft) }}" style="width: 200px;height: auto;">
+                        @endif
+                    </div>
+
+                    <div>
+                        @if ($addProduct->rc)
+                        <img src="{{ asset('upload_aircraft/'.$addProduct->rc) }}" style="width: 200px;height: auto;">
+                        @endif
+                    </div>
+
+
+                    <div>
+                        @if ($addProduct->aircraft_with_rc)
+                        <img src="{{ asset('upload_aircraft/'.$addProduct->aircraft_with_rc) }}" style="width: 200px;height: auto;">
+                        @endif
+                    </div>
+                </div>
 
             <!-- <div class="col-md-4">
                         <label for="aircraft" class="form-label">RC</label>
