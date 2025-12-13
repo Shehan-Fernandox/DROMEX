@@ -103,9 +103,14 @@
                 <input type="text" class="form-control" id="battery" name="battery_capacity">
             </div>
             <div class="col-md-6">
-                <label for="battery" class="form-label">Battery Capacity</label>
-                <input type="text" class="form-control" id="battery" name="battery_capacity">
-            </div>
+                        <label for="inputState" class="form-label">Category</label>
+                        <select id="inputState" class="form-select" name="category">
+                            <option selected>Choose...</option>
+                            <option>Mini Serious</option>
+                            <option>FPV</option>
+                            <option>Air Serious</option>
+                        </select>
+                    </div>
             <div class="col-md-4">
                 <label for="aircraft" class="form-label">Aircraft</label>
                 <input type="file" name="aircraft">
