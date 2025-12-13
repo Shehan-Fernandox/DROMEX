@@ -218,13 +218,13 @@
                     <div id="carouselExample" class="carousel slide carousel-fade">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('images/drones/avata.png') }}" alt="...">
+                                <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" alt="..." style="width: 300px;height:auto;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/drones/air3withrc.png') }}" alt="...">
+                                <img src="{{ asset('upload_aircraft/'.$product->rc) }}" alt="..." style="width: 300px;height:auto;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/drones/rc.png') }}" alt="...">
+                                <img src="{{ asset('upload_aircraft/'.$product->aircraft_with_rc) }}" alt="..." style="width: 300px;height:auto;">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">

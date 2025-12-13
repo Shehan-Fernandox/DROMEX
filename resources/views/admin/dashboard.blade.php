@@ -7,10 +7,11 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" class="css">
 
-  
+
 </head>
 
 <style>
+
   
   /* dashboard */
   h4 {
@@ -30,10 +31,10 @@
     align-items: center;
   }
 
-  .summery-card{
+  .summery-card {
     width: auto;
     height: 170px;
-    background:linear-gradient(to top,#000000,#C70039); 
+    background: linear-gradient(to top, #000000, #C70039);
     border-radius: 10px;
     margin-bottom: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -52,18 +53,40 @@
     text-transform: capitalize;
   }
 
-  /* gallery card */
-  .gallery-card {
-    width: auto;
-    height: 300px;
-    background-color: #ff0051ff;
-    border-radius: 10px;
-    margin-bottom: 10px;
+  .gallery-content {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+
   }
 
-  .gallery {
-    width: auto;
+  .gallery-card {
+    background-color: #C70039;
     height: 300px;
+    width: 250px;
+    border-radius: 20px;
+  }
+
+  .gallery-card1 {
+    background-color: #C70039;
+    height: 300px;
+    width: 500px;
+    border-radius: 20px;
+  }
+
+  .gallery-card2 {
+    background-color: #C70039;
+    height: 150px;
+    width: 500px;
+    border-radius: 20px;
+  }
+
+  .gallery-card3 {
+    background-color: #C70039;
+    height: 150px;
+    width: 150px;
+    border-radius: 20px;
   }
 
   
@@ -71,8 +94,8 @@
 
 <body>
 
-@include('layouts.adminNav')
-  
+  @include('layouts.adminNav')
+
 
   <div style="margin-top: 100px;">
     <h4>dashboard</h4>
@@ -107,65 +130,32 @@
 
   </div>
 
-  <!-- gallery -->
-  <!-- <div class="container-fluid mt-5 mb-5">
-    <div class="row">
+  <div class="container-fluid">
+    <div class="gallery-content">
+      <div class="gallery-card"></div>
+      <div class="gallery-card1"></div>
+      <div style="    display: flex;flex-direction: column;gap: 20px;">
+        <div class="gallery-card2"></div>
+        <div class="gallery-card2"></div>
+      </div>
 
-      <div class="col-12 col-md-8 overflow-background">
-        <div class="overflow-y-scroll" style="height: 300px;width: auto;">
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div style="display: flex;flex-direction: column;gap:20px;">
+        <div style="display: flex;justify-content: center;gap:20px;">
+          <div class="gallery-card3"></div>
+          <div class="gallery-card3"></div>
         </div>
+
+        <div style="display: flex;justify-content: center;gap:20px;">
+          <div class="gallery-card3"></div>
+          <div class="gallery-card3"></div>
+        </div>
+
       </div>
 
-      <div class="col-12 col-md-4">
-        <div class="gallery-card"></div>
-      </div>
+
 
     </div>
-
-  </div> -->
-
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 

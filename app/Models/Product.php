@@ -20,6 +20,7 @@ class Product extends Model
         'fly_time',
         'camera_resolution',
         'battery_capacity',
+        'category',
         'aircraft',
         'rc',
         'aircraft_with_rc'

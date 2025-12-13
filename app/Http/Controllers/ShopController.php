@@ -10,10 +10,14 @@ class ShopController extends Controller
     /**
      * Display a listing of the resource.
      */
+   
+
     public function index()
     {
-        $products = Product::all();
-        return view('pages.shop', compact('products'));
+        $mini = Product::where('category','Mini Serious')->get();
+        $fpv = Product::where('category','FPV')->get();
+        $air = Product::where('category','Air Serious')->get();
+        return view('pages.shop', compact('mini','fpv','air'));
     }
 
     /**

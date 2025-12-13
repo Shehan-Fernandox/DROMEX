@@ -168,22 +168,22 @@
             <div class="row">
                 <div class="col-12 col-md-3">
                     <div class="product-summery-card">
-                        <h5>Total Products {{$product_count}}</h5>
+                        <h5>Total Aircrafts {{$product_count}}</h5>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="product-summery-card">
-                        <h5>Total Users {{$users_count}}</h5>
+                        <h5>Mini Serieous Aircrafts {{$users_count}}</h5>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="product-summery-card">
-                        <h5>Total appointments 10</h5>
+                        <h5>Mavic Aircrafts 10</h5>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="product-summery-card">
-                        <h5>Total messages 10</h5>
+                        <h5>FPV Aircrafts 10</h5>
                     </div>
                 </div>
             </div>
