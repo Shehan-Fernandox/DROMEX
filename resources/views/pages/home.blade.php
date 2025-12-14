@@ -100,6 +100,19 @@
         overflow: hidden;
         text-align: center;
         transition: transform 0.3s ease, background 0.3s ease;
+
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #ff0051ff;
+        /* red color */
+        clip-path: polygon(0 0, 60% 0, -60% 60%, 0% 0%);
     }
 
     .card:hover {
@@ -118,7 +131,19 @@
         transition: opacity 0.3s ease, transform 0.3s ease;
         width: 200px;
         position: absolute;
-        margin-top: 120px;
+        margin-top: 50px;
+    }
+
+    .card .learn-more {
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        width: 200px;
+        position: absolute;
+        margin-top: 95px;
     }
 
     /* Show button when hovered */
@@ -153,11 +178,7 @@
 
     }
 
-    .buy {
-        background-color: #ff0051ff;
-        color: #f5f5f5;
-        font-weight: bolder;
-    }
+
 
     .price {
         color: rgba(255, 44, 167, 1)ff;
@@ -170,9 +191,12 @@
     }
 
 
+
+
     .card-titles {
         font-weight: bold;
         color: #ff0051ff;
+        font-size: 25px;
     }
 
     .welcome {
@@ -229,7 +253,6 @@
         transform: scale(1.0.5);
         transition: ease 0.3s;
     }
-
 </style>
 
 <body class="body">
@@ -272,261 +295,159 @@
     </div>
 
 
-    <div class="container text-center  mt-5">
-
-
-        <div class="row justify-content-center">
-            <div class="container text-center" style="padding-bottom: 50px;">
-                <div class="row ">
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
-                    </div>
-                    <div class="col featured-product">
-                        Mini Serious Drones
-                    </div>
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
-                    </div>
-                </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-2 col-md-4" style="align-content: center;">
+                <div class="product-line"></div>
             </div>
-            <div class="row p-0 container-fluid">
-                <div class="col view-all p-0">
-                    <a href="{{ route('pages.shop') }}" class="btn view-all">
-                        <p class="view-all" style="color: #ff0051ff;">View All</p>
-                    </a>
-                </div>
+            <div class="col-8 col-md-4">
+                <h1 style="color: black; transition: color 0.5s ease, transform 0.3s ease;text-align: center;"
+                    onmouseover="this.style.color='black'; this.style.transform='scale(1.1)';"
+                    onmouseout="this.style.color='black'; this.style.transform='scale(1)';">
+                    Air Serious Drones
+                </h1>
             </div>
 
-            <div class="row p-0">
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-img">
-                            <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class="card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
-
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class=" card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class="card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class="card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-
-                        </div>
-                    </div>
-                </div>
+            <div class="col-2 col-md-4" style="align-content: center;">
+                <div class="product-line"></div>
             </div>
-            <div class="container text-center" style="padding-bottom: 80px;">
-                <div class="row ">
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
-                    </div>
-                    <div class="col ">
-                        → High-end models for cinematography, mapping, or inspection.
-                    </div>
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
-                    </div>
-                </div>
-            </div>
+
         </div>
-
-
-
-    </div>
-
-    <div class="container text-center ">
-        <div class="row justify-content-center">
-            <div class="container text-center" style="padding-bottom: 50px;">
-                <div class="row ">
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
-                    </div>
-                    <div class="col featured-product">
-                        Mini Serious Drones
-                    </div>
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row p-0 container-fluid">
-                <div class="col view-all p-0">
-                    <a href="{{ route('pages.shop') }}" class="btn view-all">
-                        <p class="view-all" style="color: #ff0051ff;">View All</p>
-                    </a>
-                </div>
-            </div>
-            <div class="row p-0">
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-img">
-                            <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class="card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
-
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class=" card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class="card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class="card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container text-center" style="padding-bottom: 80px;">
-                <div class="row ">
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
-                    </div>
-                    <div class="col ">
-                        → High-end models for cinematography, mapping, or inspection.
-                    </div>
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-12 col-md-12" style="display: flex;justify-content: flex-end;">
+                <a href="{{ route('pages.air_serious') }}" class="btn" style="color:#ff0051ff;font-size: 20px;">view all</a>
             </div>
         </div>
     </div>
 
-    <div class="container text-center">
-        <div class="row justify-content-center">
-            <div class="container text-center" style="padding-bottom: 50px;">
-                <div class="row ">
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
-                    </div>
-                    <div class="col featured-product">
-                        FPV Drones
-                    </div>
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row p-0 container-fluid">
-                <div class="col view-all p-0">
-                    <a href="{{ route('pages.shop') }}" class="btn view-all">
-                        <p class="view-all" style="color: #ff0051ff;">View All</p>
-                    </a>
-                </div>
-            </div>
-            <div class="row p-0">
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-img">
-                            <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class="card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
+    <div class="container mt-5">
+        <div class="row p-0">
 
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class=" card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class="card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="card-img-top" alt="...">
-                        <div class="card-body" style="text-align: center;">
-                            <h5 class="card-titles">Mini 3 Pro</h5>
-                            <p class="price">LKR 250 000/=</p>
-                            <a href="#" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
 
-                        </div>
+            @foreach ($air as $product)
+            <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-img">
+                        <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:300px;">
+                    </div>
+                    <div class="card-body" style="text-align: center;">
+                        <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
+                        <p class="price">LKR {{$product->product_price}}/=</p>
+                        <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
+                        <a href="{{ route('addProducts.show', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
+
+                            <p>learn more</p>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="container text-center" style="padding-bottom: 80px;">
-                <div class="row ">
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
+            @endforeach
+
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-2 col-md-4" style="align-content: center;">
+                <div class="product-line"></div>
+            </div>
+            <div class="col-8 col-md-4">
+                <h1 style="color: black; transition: color 0.5s ease, transform 0.3s ease;text-align: center;"
+                    onmouseover="this.style.color='black'; this.style.transform='scale(1.1)';"
+                    onmouseout="this.style.color='black'; this.style.transform='scale(1)';">
+                    Mini Series Drones
+                </h1>
+            </div>
+
+            <div class="col-2 col-md-4" style="align-content: center;">
+                <div class="product-line"></div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-12" style="display: flex;justify-content: flex-end;">
+                <a href="{{ route('pages.mini_serious') }}" class="btn" style="color:#ff0051ff;font-size: 20px;">view all</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row p-0">
+
+
+            @foreach ($mini as $product)
+            <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-img">
+                        <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:300px;">
                     </div>
-                    <div class="col ">
-                        → High-end models for cinematography, mapping, or inspection.
-                    </div>
-                    <div class="col" style="align-content:center;">
-                        <div class="line-1"></div>
+                    <div class="card-body" style="text-align: center;">
+                        <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
+                        <p class="price">LKR {{$product->product_price}}/=</p>
+                        <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
+                        <a href="{{ route('addProducts.show', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
+
+                            <p>learn more</p>
+                        </a>
                     </div>
                 </div>
             </div>
+            @endforeach
+
+        </div>
+    </div>
+
+
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-2 col-md-4" style="align-content: center;">
+                <div class="product-line"></div>
+            </div>
+            <div class="col-8 col-md-4">
+                <h1 style="color: black; transition: color 0.5s ease, transform 0.3s ease;text-align: center;"
+                    onmouseover="this.style.color='black'; this.style.transform='scale(1.1)';"
+                    onmouseout="this.style.color='black'; this.style.transform='scale(1)';">
+                    FPV Drones
+                </h1>
+            </div>
+
+            <div class="col-2 col-md-4" style="align-content: center;">
+                <div class="product-line"></div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-12" style="display: flex;justify-content: flex-end;">
+                <a href="{{ route('pages.fpv') }}" class="btn" style="color:#ff0051ff;font-size: 20px;">view all</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row p-0">
+
+
+            @foreach ($fpv as $product)
+            <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-img">
+                        <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:300px;">
+                    </div>
+                    <div class="card-body" style="text-align: center;">
+                        <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
+                        <p class="price">LKR {{$product->product_price}}/=</p>
+                        <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
+                        <a href="{{ route('addProducts.show', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
+
+                            <p>learn more</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
         </div>
     </div>
 
@@ -629,38 +550,7 @@
 
 
 
-    <!--  -->
-    <div class="container my-4">
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" style="margin-top: 50px;">
-            <div class="carousel-inner">
-                @foreach($carousel as $post)
-                <div class="carousel-item active">
-                    <img src="{{ asset('storage/' . $post->carousel_image) }}" class="d-block w-100 img-fluid rounded-4" alt="Drone Image 1">
 
-
-                </div>
-                @endforeach
-                <!-- <div class="carousel-item">
-                    <img src="{{ asset('images/carousel/post 3.jpg') }}" class="d-block w-100 img-fluid rounded-4" alt="Drone Image 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('images/carousel/post 4.jpg') }}" class="d-block w-100 img-fluid rounded-4" alt="Drone Image 3">
-                </div> -->
-            </div>
-
-            <!-- Optional controls -->
-            <!-- 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button> 
-        -->
-        </div>
-    </div>
 
 
 
