@@ -2,16 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public function user() {
-    return $this->belongsTo(User::class);
-}
+    use HasFactory;
 
-public function drone() {
-    return $this->belongsTo(Product::class);
-}
-
+    protected $fillable = [
+        'product_id',
+        'user_id',
+        'first_name',
+        'last_name',
+        'email',
+        'address',
+        'city',
+        'province',
+        'zip'
+    ];
 }

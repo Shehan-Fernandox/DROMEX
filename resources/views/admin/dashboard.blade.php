@@ -107,12 +107,12 @@
       <div class="row">
         <div class="col-12 col-md-3">
           <div class="summery-card">
-            <h5>Total Orders {{$count}}</h5>
+            <h5></h5>
           </div>
         </div>
         <div class="col-12 col-md-3">
           <div class="summery-card">
-            <h5>Total Users {{$users}}</h5>
+            <h5></h5>
           </div>
         </div>
         <div class="col-12 col-md-3">

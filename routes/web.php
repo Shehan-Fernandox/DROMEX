@@ -33,6 +33,7 @@ Route::get('services', function () {
 // admin panel routes
 Route::resource('admin', AdminController::class);
 Route::resource('addProducts', ProductController::class);
+Route::resource('adminOrder', OrderController::class);
 
 
 
@@ -43,6 +44,7 @@ Route::get('/', [HomePageController::class, 'index'])->name('pages.home');
 Route::get('shop', [ShopController::class, 'index'])->name('pages.shop');
 
 Route::get('order/{productId}', [OrderController::class, 'show'])->name('pages.order')->middleware('auth');
+Route::post('/order/store',[OrderController::class, 'store'])->name('order.store');
 
 
 
