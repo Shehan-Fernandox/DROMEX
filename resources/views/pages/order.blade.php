@@ -241,9 +241,20 @@
             </div>
             <div class="col-12 col-md-6 right">
 
-                <form class="row g-3">
+                <form class="row g-3" method="POST" action="{{route('order.store')}}">
+                    @csrf
+                    
+
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+
                     <h1 class="order-form-title">order now</h1>
                     <p style="text-align: center;margin-top: -40px;margin-bottom: 40px;">Get your drone delivered fast—place your order today.</p>
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     <div class="col-md-6">
                         <label for="first_name" class="form-label">First Name</label>
                         <input type="text" class="form-control" id="first_name" name="first_name">
@@ -266,7 +277,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">Province</label>
-                        <select id="inputState" class="form-select">
+                        <select id="inputState" class="form-select" name="province">
                             <option selected>Choose...</option>
                             <option>Central</option>
                             <option>Eastern</option>
@@ -280,16 +291,9 @@
                     </div>
                     <div class="col-md-2">
                         <label for="inputZip" class="form-label">Zip</label>
-                        <input type="text" class="form-control" id="inputZip">
+                        <input type="text" class="form-control" id="zip" name="zip">
                     </div>
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                                Check me out
-                            </label>
-                        </div>
-                    </div>
+
                     <div class="col-12" style="display: flex;justify-content: center;">
                         <button type="submit" class="btn order-btn">Order Now</button>
                     </div>

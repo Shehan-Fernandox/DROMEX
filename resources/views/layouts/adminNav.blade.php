@@ -128,7 +128,7 @@
           <a href="{{ route('admin.index') }}">manage users</a>
         </div>
         <div class="side-bar-item">
-          <a href="">manage orders</a>
+          <a href="{{ route('adminOrder.index') }}">manage orders</a>
         </div>
         <div class="side-bar-item">
           <a href="">appointments</a>
