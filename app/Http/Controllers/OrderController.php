@@ -13,7 +13,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('admin.adminOrder.index');
+        $total_orders = Order::count();
+        $orders = Order::all();
+        return view('admin.adminOrder.index', compact('orders', 'total_orders'));
     }
 
     /**
@@ -27,18 +29,37 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-   public function store(Request $request)
+  public function store(Request $request)
 {
+    // Validate input
+    $request->validate([
+        'product_id' => 'required|exists:products,id',
+        'first_name' => 'required|string|max:255',
+        'last_name'  => 'required|string|max:255',
+        'email'      => 'required|email',
+        'address'    => 'required|string',
+        'city'       => 'required|string',
+        'province'   => 'required|string',
+        'zip'        => 'required|string',
+    ]);
+
+    // Get product details
+    $product = Product::findOrFail($request->product_id);
+
+    // Create order
     Order::create([
-        'user_id'    => auth()->id(),
-        'product_id' => $request->product_id, // ✅ FIXED
-        'first_name' => $request->first_name,
-        'last_name'  => $request->last_name,
-        'email'      => $request->email,
-        'address'    => $request->address,
-        'city'       => $request->city,
-        'province'   => $request->province,
-        'zip'        => $request->zip,
+        'user_id'        => auth()->id(),
+        'product_id'     => $product->id,
+        'product_name'   => $product->product_name,
+        'product_price'  => $product->product_price,
+        'aircraft'  => $product->aircraft, // column name in products table
+        'first_name'     => $request->first_name,
+        'last_name'      => $request->last_name,
+        'email'          => $request->email,
+        'address'        => $request->address,
+        'city'           => $request->city,
+        'province'       => $request->province,
+        'zip'            => $request->zip,
     ]);
 
     return redirect()->back()->with('success', 'Order placed successfully!');
