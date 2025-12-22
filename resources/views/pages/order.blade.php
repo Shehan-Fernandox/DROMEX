@@ -156,7 +156,7 @@
             color: #37001aff;
         }
 
-        .order-btn {
+        .buy {
             background-color: #1a1a1aff;
             color: whitesmoke;
             width: 100%;
@@ -165,7 +165,7 @@
             height: 50px;
         }
 
-        .order-btn:hover {
+        .buy:hover {
             background-color: #FF9B00;
             transition: ease 0.3s;
             color: #1a1a1aff;
@@ -295,7 +295,7 @@
                     </div>
 
                     <div class="col-12" style="display: flex;justify-content: center;">
-                        <button type="submit" class="btn order-btn">Order Now</button>
+                        <button  class=" buy">Place Order</button>
                     </div>
                 </form>
             </div>

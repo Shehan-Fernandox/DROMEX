@@ -13,10 +13,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product_count = Product::count();
-        $users_count = User::count();
         $products = Product::all();
-        return view('admin.addProducts.index', compact('products', 'product_count', 'users_count'));
+        $product_count = Product::count();
+        $total_air_serious = Product::where('category', 'Air Serious')->count();
+        $total_mini_serious = Product::where('category', 'Mini Serious')->count();
+        $total_fpv = Product::where('category', 'FPV')->count();
+        return view('admin.addProducts.index', compact('products','product_count', 'total_air_serious', 'total_mini_serious', 'total_fpv'));
     }
 
     /**

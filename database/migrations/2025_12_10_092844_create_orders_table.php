@@ -6,14 +6,26 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+
+            // User & Product relations
+            $table->foreignId('user_id')
+                  ->constrained()
+                  ->cascadeOnDelete();
+
+            $table->foreignId('product_id')
+                  ->constrained()
+                  ->cascadeOnDelete();
+
+            // Product snapshot (important)
+            $table->string('product_name');
+            $table->integer('product_price');
+            $table->string('aircraft');
+
+            // Customer details
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
@@ -21,16 +33,11 @@ return new class extends Migration
             $table->string('city');
             $table->string('province');
             $table->string('zip');
-            $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('orders');
