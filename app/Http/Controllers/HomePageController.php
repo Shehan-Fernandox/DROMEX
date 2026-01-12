@@ -27,7 +27,9 @@ class HomePageController extends Controller
             ->take(4)
             ->get();
 
-        return view('pages.home', compact('mini', 'fpv', 'air'));
+        $allProducts = Product::all();
+
+        return view('pages.home', compact('mini', 'fpv', 'air', 'allProducts'));
     }
 
     /**

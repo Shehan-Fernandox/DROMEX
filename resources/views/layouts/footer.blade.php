@@ -9,11 +9,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <style>
+   
     .logo {
         color: #FF9B00;
         font-weight: bolder;
         margin-top: 20px;
         font-size: 30px;
+        margin-bottom: 50px;
 
     }
 
@@ -24,87 +26,66 @@
         padding: 0px;
     }
 
-    .nav-bar {
-
-        padding: 0px;
-        margin-top: 5px;
-
-
-    }
-
-    /* .navbar .nav-link.active {
-        background-color: #FF9B00;
-        color: #000000;
-        border-radius: 5px;
-    } */
-
-
-    .nav-sec:hover {
-        background-color: #FF9B00;
-        color: #000000;
-    }
-
-    .nav-logo {
-        font-weight: bolder;
-        color: #FF9B00;
-    }
-
-
-    .navbar .nav-link {
-        color: #FF9B00;
-        /* default text color */
-        font-weight: bold;
-    }
-
-
-    .navbar .nav-link.active {
-        background-color: #FF9B00;
-        color: #000000;
-        /* active text color */
-        border-radius: 5px;
-    }
-
-    .fixed-nav {
-        position: sticky;
-        top: 0px;
-        z-index: 1;
+    .footer {
         background-color: #000000;
-        padding: 10px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
     }
 
-
-    .navbar-toggler {
-        background-color: transparent;
-        border: 2px solid #FF9B00;
+    h4{
+        text-transform: capitalize;
     }
 </style>
 
 <body>
-    <div class="fixed-nav">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col logo">
-                    DROMEX
-                </div>
-            </div>
+
+    <div class="row footer g-0">
+        <div class="logo">
+            <h3>dromex</h3>
         </div>
-        <div class="line"></div>
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <a href=""><img src="{{ asset('images/whatsapp.png') }}" alt=""></a>
-                </div>
-                <div class="col">
-                    <a href=""><img src="{{ asset('images/facebook.png') }}" alt=""></a>
-                </div>
-                <div class="col">
-                    <a href=""><img src="{{ asset('images/whatsapp.png') }}" alt=""></a>
-                </div>
-            </div>
+
+        <div class="col-6 col-md-3 p-0">
+            <h4>featured links</h4>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+        </div>
+
+        <div class="col-6 col-md-3 p-0">
+           <h4>quick actions</h4>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+        </div>
+
+        <div class="col-6 col-md-3 p-0">
+            <h4>contact us</h4>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+        </div>
+
+        <div class="col-6 col-md-3 p-0">
+            <h4>contact us</h4>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
+            <p>home</p>
         </div>
     </div>
 
-    
 </body>
 
 </html>
