@@ -454,93 +454,24 @@
 
     <!-- over flow -->
     <div class="container text-center my-5 p-5 bg-light shadow rounded-4">
+        <h4 style="font-weight: bold;color:#ff0051ff">What are you looking for?</h4>
         <!-- Horizontal Scroll -->
         <div class="overflow-auto">
             <div class="d-flex flex-nowrap justify-content-start align-items-center gap-4">
 
-                <a href="" style="text-decoration: none;color:#ff0051ff;font-size: 20px;">
+                @foreach($allProducts as $product)
+
+                <a href="{{ route('addProducts.show', $product->id) }}" style="text-decoration: none;color:#ff0051ff;font-size: 20px;">
                     <div style="height: 200px;width: 200px;">
-                        <img src="{{ asset('images/panthom.png') }}" class="img-fluid rounded" style="max-width:200px;" alt="">
+                        <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="img-fluid rounded" style="max-width:200px;" alt="">
                     </div>
                     <div>
-                        <p>panthom</p>
+                        <p>{{$product->product_name}}</p>
                     </div>
 
                 </a>
 
-                <a href="">
-                    <div style="height: 200px;width: 200px;">
-                        <img src="{{ asset('images/drones/mini 2.png') }}" class="img-fluid rounded" style="max-width:200px;" alt="">
-                    </div>
-                    <div>
-                        <p>mini 2</p>
-                    </div>
-                </a>
-
-                <a href="">
-                    <div style="height: 200px;width: 200px;">
-                        <img src="{{ asset('images/drones/mini 3.png') }}" class="img-fluid rounded" style="max-width:200px;" alt="">
-
-                    </div>
-                    <div>
-                        <p>mini 3</p>
-                    </div>
-                </a>
-
-                <a href="">
-                    <div style="height: 200px;width: 200px;">
-                        <img src="{{ asset('images/drones/mini 3 pro.png') }}" class="img-fluid rounded" style="max-width:200px;" alt="">
-                    </div>
-                    <div>
-                        <p>mini 3 pro</p>
-                    </div>
-                </a>
-
-                <a href="">
-                    <div style="height: 200px;width: 200px;">
-                        <img src="{{ asset('images/drones/mini 4 pro.png') }}" class="img-fluid rounded" style="max-width:200px;" alt="">
-                    </div>
-                    <div>
-                        <p>mini 4 pro</p>
-                    </div>
-                </a>
-                <a href="">
-                    <div style="height: 200px;width: 200px;">
-                        <img src="{{ asset('images/drones/air 3.png') }}" class="img-fluid rounded" style="max-width:200px;" alt="">
-                    </div>
-                </a>
-                <a href="">
-                    <div style="height: 200px;width: 200px;">
-                        <img src="{{ asset('images/drones/neo.png') }}" class="img-fluid rounded" style="max-width:200px;" alt="">
-                    </div>
-                    <div>
-                        <p>Neo</p>
-                    </div>
-                </a>
-                <a href="">
-                    <div style="height: 200px;width: 200px;">
-                        <img src="{{ asset('images/drones/avata.png') }}" class="img-fluid rounded" style="max-width:200px;" alt="">
-                    </div>
-                    <div>
-                        <p>Avata</p>
-                    </div>
-                </a>
-                <a href="">
-                    <div style="height: 200px;width: 200px;">
-                        <img src="{{ asset('images/drones/flip.png') }}" class="img-fluid rounded" style="max-width:200px;" alt="">
-                    </div>
-                    <div>
-                        <p>Flip</p>
-                    </div>
-                </a>
-                <a href="">
-                    <div style="height: 200px;width: 200px;">
-                        <img src="{{ asset('images/drones/mavic 4 pro.png') }}" class="img-fluid rounded" style="max-width:200px;" alt="">
-                    </div>
-                    <div>
-                        <p>Mavic 4 pro</p>
-                    </div>
-                </a>
+                @endforeach
 
             </div>
         </div>
@@ -555,36 +486,41 @@
 
 
 
-    <div class="container">
+    <div class="container mb-5">
         <div class="row" style="justify-content: center;">
             <div class="col-12 col-md-3 mb-3">
-                <div class="help-support" style="display: flex; justify-content: center; align-items: center;">
+                <div class="help-support" style="display: flex; justify-content: center; align-items: center;flex-direction: column;">
                     <a href="">
                         <img src="{{ asset('images/icon/support.png') }}" style="height:70px" alt="">
                     </a>
+                    <p>help & support</p>
                 </div>
             </div>
 
             <div class="col-12 col-md-3 mb-3">
-                <div class="help-support" style="display: flex; justify-content: center; align-items: center;">
+                <div class="help-support" style="display: flex; justify-content: center; align-items: center;flex-direction: column;">
                     <a href="">
                         <img src="{{ asset('images/icon/customer-service.png') }}" style="height:70px" alt="">
                     </a>
+                    <p>learn more</p>
                 </div>
             </div>
 
             <div class="col-12 col-md-3 mb-3">
-                <div class="help-support" style="display: flex; justify-content: center; align-items: center;">
+                <div class="help-support" style="display: flex; justify-content: center; align-items: center;flex-direction: column;">
                     <a href="">
                         <img src="{{ asset('images/icon/chat.png') }}" style="height:60px" alt="">
                     </a>
+                    <p>help</p>
                 </div>
             </div>
 
             <div class="col-12 col-md-3 mb-3">
-                <div class="help-support" style="display: flex; justify-content: center; align-items: center;">
-                    <a href="">
+                <div class="help-support" style="display: flex; justify-content: center; align-items: center;flex-direction: column;">
+                    <a href="{{ route('pages.contact') }}" style="text-decoration: none;">
                         <img src="{{ asset('images/icon/phone.png') }}" style="height:70px" alt="">
+                    
+                    <p>contact us</p>
                     </a>
                 </div>
             </div>

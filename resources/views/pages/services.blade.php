@@ -530,11 +530,7 @@
 
     
 
-    <!-- <div class="typing">
-        <p class="text">
-            I am a software engineer
-        </p>
-    </div> -->
+ @include('layouts.footer')
 
 </body>
 
