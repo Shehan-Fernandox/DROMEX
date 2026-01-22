@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class LearnMoreController extends Controller
@@ -33,10 +34,14 @@ class LearnMoreController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+     public function show($productId)
     {
-        //
+
+        $product = Product::findOrFail($productId);
+
+        return view('pages.learn_more', compact('product'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
