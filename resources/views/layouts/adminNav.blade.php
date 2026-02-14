@@ -122,7 +122,7 @@
           <a href="{{ route('admin.index') }}">dashboard</a>
         </div>
         <div class="side-bar-item">
-          <a href="{{ route('addProducts.index') }}">add product</a>
+          <a href="{{ route('products.index') }}">add product</a>
         </div>
         <div class="side-bar-item">
           <a href="{{ route('admin.index') }}">manage users</a>

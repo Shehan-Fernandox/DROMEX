@@ -204,7 +204,7 @@
                         <h6 class="product-name">{{$product->product_name}}</h6>
                     </div>
                     <div class="learn-more">
-                        <a href="{{ route('addProducts.show', $product->id) }}">
+                        <a href="{{ route('products.show', $product->id) }}">
                             <h6 class="learn">Learn More</h6>
                         </a>
 

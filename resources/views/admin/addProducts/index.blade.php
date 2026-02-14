@@ -199,7 +199,7 @@
                 <div class="add-product">
                     <h4>Add new product</h4>
                     <p>Add a new drone to your product catalog by entering its specifications, pricing, features, and images.</p>
-                    <a href="{{route('addProducts.create')}}">add product</a>
+                    <a href="{{route('products.create')}}">add product</a>
 
                 </div>
                 <!-- <img src="{{asset('images/admin/addProduct.png')}}" alt="" style="width: fit-content;object-fit: cover;"> -->
@@ -249,9 +249,9 @@
 
                             <td>
                                 <div style="display: flex;justify-content: space-between;">
-                                    <a href="{{route('addProducts.edit', $product->id)}}" class="btn btn-warning" data-bs-target="#exampleModal" style="width: fit-content;font-weight: bold;">update</a>
+                                    <a href="{{route('products.edit', $product->id)}}" class="btn btn-warning" data-bs-target="#exampleModal" style="width: fit-content;font-weight: bold;">update</a>
                                     <!-- <a href="" class="btn btn-success" style="width: fit-content;font-weight: bold;">view</a> -->
-                                    <form action="{{ route('addProducts.destroy', ['addProduct' => $product->id]) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                    <form action="{{ route('products.destroy', ['product' => $product->id])" method="POST" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>

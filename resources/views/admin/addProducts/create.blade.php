@@ -59,7 +59,7 @@
 
 
     <div class="container form-container">
-        <form class="row g-3" method="post" action="{{ route('addProducts.store') }}" enctype="multipart/form-data">
+        <form class="row g-3" method="post" action="{{ route('products.store') }}" enctype="multipart/form-data">
             @csrf
             <h3>add product</h3>
             <div class="col-md-6">
