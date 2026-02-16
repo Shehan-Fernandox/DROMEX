@@ -143,7 +143,7 @@
                 </a>
             </div>
             <div class="col-12 col-md-4 p-0">
-                <a href="">
+                <a href="https://wa.me/94752103712" target="_blank">
                     <div class="contact-card">
                         <img src="{{asset('images/icon/whatsapp.png')}}" style="height: 70px;width:70px;" alt="">
                         <!-- <i class="bi bi-geo-alt"></i>
@@ -152,7 +152,7 @@
                 </a>
             </div>
             <div class="col-12 col-md-4 p-0">
-                <a href="">
+                <a href="https://www.youtube.com/@TeamFernandolk  " target="_blank">
                     <div class="contact-card">
                         <img src="{{asset('images/icon/youtube.png')}}" style="height: 70px;width:70px;" alt="">
                         <!-- <i class="bi bi-clock"></i>
