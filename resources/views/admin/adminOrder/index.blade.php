@@ -98,6 +98,7 @@
 
     </div>
 
+
     <div class="container-fluid">
         <div class="row product-section mt-5">
             <div class="col-2 col-md-5">
@@ -156,6 +157,8 @@
             </tbody>
         </table>
     </div>
+
+   
 </body>
 
 </html>

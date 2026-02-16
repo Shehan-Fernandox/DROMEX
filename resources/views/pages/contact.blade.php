@@ -72,6 +72,20 @@
             transition: ease-in-out 0.3s;
         }
 
+        .thanks-line{
+            height: 3px;
+            background-color: #ff0051ff;
+        }
+
+        .thanks{
+            text-transform: capitalize;
+            text-align:center;
+            font-weight:bold;
+            font-size:25px;
+            margin-top:30px;
+            margin-bottom:30px;
+        }
+
        
 
         
@@ -147,6 +161,11 @@
                 </a>
             </div>
         </div>
+    </div>
+
+    <div style="margin-top: 50px;">
+        <div class="thanks-line"></div>
+        <p class="thanks">...thanks for the contact us...</p>
     </div>
 
     

@@ -72,32 +72,25 @@ class ProductController extends Controller
         }
 
         Product::create($data);
-        return redirect()->route('addProducts.index');
+        return redirect()->route('products.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($productId)
-    {
-
-        $product = Product::findOrFail($productId);
-
-        return view('pages.learn_more', compact('product'));
-    }
-
+    // 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $addProduct)
+    public function edit(Product $product)
     {
-        return view('admin.addProducts.update', compact('addProduct'));
+        return view('admin.addProducts.update', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-   public function update(Request $request, Product $addProduct)
+   public function update(Request $request, Product $product)
 {
     $request->validate([
         'product_name' => 'required|string|max:100|min:2',
@@ -118,8 +111,8 @@ class ProductController extends Controller
 
     // aircraft
     if ($request->hasFile('aircraft')) {
-        if ($addProduct->aircraft && file_exists(public_path('upload_aircraft/' . $addProduct->aircraft))) {
-            unlink(public_path('upload_aircraft/' . $addProduct->aircraft));
+        if ($product->aircraft && file_exists(public_path('upload_aircraft/' . $product->aircraft))) {
+            unlink(public_path('upload_aircraft/' . $product->aircraft));
         }
 
         $imageName = time() . '_' . $request->aircraft->getClientOriginalName();
@@ -129,8 +122,8 @@ class ProductController extends Controller
 
     // rc
     if ($request->hasFile('rc')) {
-        if ($addProduct->rc && file_exists(public_path('upload_aircraft/' . $addProduct->rc))) {
-            unlink(public_path('upload_aircraft/' . $addProduct->rc));
+        if ($product->rc && file_exists(public_path('upload_aircraft/' . $product->rc))) {
+            unlink(public_path('upload_aircraft/' . $product->rc));
         }
 
         $rcName = time() . '_' . $request->rc->getClientOriginalName();
@@ -140,8 +133,8 @@ class ProductController extends Controller
 
     // aircraft with rc
     if ($request->hasFile('aircraft_with_rc')) {
-        if ($addProduct->aircraft_with_rc && file_exists(public_path('upload_aircraft/' . $addProduct->aircraft_with_rc))) {
-            unlink(public_path('upload_aircraft/' . $addProduct->aircraft_with_rc));
+        if ($product->aircraft_with_rc && file_exists(public_path('upload_aircraft/' . $product->aircraft_with_rc))) {
+            unlink(public_path('upload_aircraft/' . $product->aircraft_with_rc));
         }
 
         $name = time() . '_' . $request->aircraft_with_rc->getClientOriginalName();
@@ -149,9 +142,9 @@ class ProductController extends Controller
         $data['aircraft_with_rc'] = $name;
     }
 
-    $addProduct->update($data);
+    $product->update($data);
 
-    return redirect()->route('addProducts.index');
+    return redirect()->route('products.index');
 }
 
   

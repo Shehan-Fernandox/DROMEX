@@ -124,7 +124,7 @@
                 <h1 style="color: black; transition: color 0.5s ease, transform 0.3s ease;text-align: center;"
                     onmouseover="this.style.color='black'; this.style.transform='scale(1.1)';"
                     onmouseout="this.style.color='black'; this.style.transform='scale(1)';">
-                    Air Serious Drones
+                    Mini Serious Drones
                 </h1>
             </div>
 
@@ -149,7 +149,7 @@
                         <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
                         <p class="price">LKR {{$product->product_price}}/=</p>
                         <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        <a href="{{ route('addProducts.show', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
+                        <a href="{{ route('pages.learn-more', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
 
                             <p>learn more</p>
                         </a>

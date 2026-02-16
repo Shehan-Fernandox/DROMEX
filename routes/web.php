@@ -52,7 +52,7 @@ Route::get('order/{productId}', [OrderController::class, 'show'])->name('pages.o
 Route::post('/order/store',[OrderController::class, 'store'])->name('order.store');
 
 
-
+Route::get('learn-more/{productId}', [LearnMoreController::class, 'show'])->name('pages.learn-more');
 
 
 Route::get('slider', function(){
