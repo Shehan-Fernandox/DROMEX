@@ -167,7 +167,7 @@
                 <h1 style="color: black; transition: color 0.5s ease, transform 0.3s ease;"
                     onmouseover="this.style.color='black'; this.style.transform='scale(1.1)';"
                     onmouseout="this.style.color='black'; this.style.transform='scale(1)';">
-                    welcome to our services
+                    welcome to our shop
                 </h1>
             </div>
 
@@ -193,22 +193,24 @@
                     </div>
                     <div class="container-fluid">
                         <p style="text-align: justify;">
-                        We are a passionate and skilled two-member dronegraphy team dedicated
-                        to capturing stunning aerial visuals that bring your vision to life.
-                        With years of hands-on experience and a deep understanding of drone technology,
-                        we specialize in delivering high-quality, creative, and precise aerial footage tailored to
-                        each client’s unique requirements.
-                        At the heart of our work lies a commitment to innovation,
-                        accuracy, and excellence. We combine advanced drone technology with a sharp artistic
-                        eye to produce captivating results — whether it’s for events, real estate,
-                        cinematic projects, or corporate promotions.
+                       Dromex is a dedicated drone technology shop focused on
+                       providing high-quality drones and accessories for hobbyists,
+                       photographers, filmmakers, and professionals. We proudly offer
+                       genuine drones from DJI, a global leader in drone innovation and
+                       aerial technology. Our mission is to make advanced drone technology
+                       accessible, reliable, and affordable for everyone who is passionate
+                       about aerial innovation. At Dromex, we carefully select and test every
+                       product to ensure performance, safety, and customer satisfaction.
+                       
                     </p>
                     <br>
                     <p style="text-align: justify;">
-                        We believe in working smart, understanding every detail of our client’s needs, and
-                        transforming them into breathtaking aerial perspectives that tell powerful stories.
-                        With professional expertise, creative insight, and smart technology,
-                        we make every project an extraordinary visual experience.
+                       Beyond selling drones, we aim to build a community by
+                       sharing knowledge, offering support, and helping our
+                       customers choose the perfect drone for their needs.
+                       Whether you are a beginner exploring the world of drones
+                       or an expert looking for advanced equipment,
+                       Dromex is your trusted partner in the sky.
                     </p>
                     </div>
                 </div>
@@ -239,7 +241,7 @@
                 <h1 style="color: black; transition: color 0.5s ease, transform 0.3s ease;"
                     onmouseover="this.style.color='black'; this.style.transform='scale(1.1)';"
                     onmouseout="this.style.color='black'; this.style.transform='scale(1)';">
-                    what we do
+                    our vision
                 </h1>
             </div>
 
@@ -261,13 +263,18 @@
             </div>
             <div class="col-12 col-md-8 p-0">
                 <div class="what-do">
-                    <p class="p-5" style="text-align: justify;">we specialize in capturing life’s most memorable moments from breathtaking aerial perspectives.
-                        Whether it’s a wedding, birthday celebration, corporate event, or any special function, we bring a cinematic touch to every occasion through the art of dronegraphy.
-
-                        Using advanced drone technology and creative expertise, we deliver stunning high-definition visuals that showcase every detail, emotion, and atmosphere from unique angles.
-                        Our goal is to transform your moments into powerful visual stories — immersive, elegant, and unforgettable.
-
-                        From intimate gatherings to grand celebrations, we ensure every frame reflects professionalism, precision, and artistry.</p>
+                    <p class="p-5" style="text-align: justify;">
+                        At Dromex, our vision is to become a leading drone solutions
+                        provider in Sri Lanka and beyond, delivering world-class
+                        aerial technology to individuals and businesses.
+                        We aim to grow as a trusted name in the drone industry by
+                        offering advanced products, expert guidance, and excellent customer service.
+                        By working with globally recognized brands like DJI, we strive to bring
+                        the latest drone innovations to our customers. Our long-term goal is to
+                        inspire creativity, support technological growth, and help shape the
+                        future of aerial technology through quality products
+                        and strong customer relationships.
+                    </p>
                 </div>
             </div>
         </div>

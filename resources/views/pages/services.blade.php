@@ -408,10 +408,12 @@
                 </div>
 
                 <div class="container">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Illo iure placeat assumenda quidem deleniti quod, cumque
-                        id veritatis iusto animi est modi reprehenderit quibusdam
-                        molestias delectus laboriosam eaque! Aperiam, tempore?
+                    <p>
+                        At Dromex, we make drone shopping easy and convenient for our customers.
+                        You can order drones anytime with our 24/7 online ordering service.
+                        We provide fast and reliable island-wide delivery, ensuring your drone
+                        reaches you within three days. Our goal is to give customers a smooth,
+                        secure, and hassle-free shopping experience from order to delivery.
                     </p>
                 </div>
                 <div class="row p-0 me-0 ms-1" width="100%">

@@ -253,6 +253,13 @@
         transform: scale(1.0.5);
         transition: ease 0.3s;
     }
+
+    .quick-actions {
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        text-align: center;
+    }
 </style>
 
 <body class="body">
@@ -385,7 +392,7 @@
                         <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
                         <p class="price">LKR {{$product->product_price}}/=</p>
                         <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        <a href="{{ route('products.show', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
+                        <a href="{{ route('pages.learn-more', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
 
                             <p>learn more</p>
                         </a>
@@ -439,7 +446,7 @@
                         <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
                         <p class="price">LKR {{$product->product_price}}/=</p>
                         <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
-                        <a href="{{ route('products.show', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
+                        <a href="{{ route('pages.learn-more', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
 
                             <p>learn more</p>
                         </a>
@@ -461,7 +468,7 @@
 
                 @foreach($allProducts as $product)
 
-                <a href="{{ route('products.show', $product->id) }}" style="text-decoration: none;color:#ff0051ff;font-size: 20px;">
+                <a href="{{ route('pages.learn-more', $product->id) }}" style="text-decoration: none;color:#ff0051ff;font-size: 20px;">
                     <div style="height: 200px;width: 200px;">
                         <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="img-fluid rounded" style="max-width:200px;" alt="">
                     </div>
@@ -490,37 +497,39 @@
         <div class="row" style="justify-content: center;">
             <div class="col-12 col-md-3 mb-3">
                 <div class="help-support" style="display: flex; justify-content: center; align-items: center;flex-direction: column;">
-                    <a href="">
+                    <a href="" class="quick-actions">
                         <img src="{{ asset('images/icon/support.png') }}" style="height:70px" alt="">
+                        <p>help & support</p>
                     </a>
-                    <p>help & support</p>
+
                 </div>
             </div>
 
             <div class="col-12 col-md-3 mb-3">
                 <div class="help-support" style="display: flex; justify-content: center; align-items: center;flex-direction: column;">
-                    <a href="">
+                    <a href="" class="quick-actions">
                         <img src="{{ asset('images/icon/customer-service.png') }}" style="height:70px" alt="">
+                        <p>learn more</p>
                     </a>
-                    <p>learn more</p>
+
                 </div>
             </div>
 
             <div class="col-12 col-md-3 mb-3">
                 <div class="help-support" style="display: flex; justify-content: center; align-items: center;flex-direction: column;">
-                    <a href="">
+                    <a href="" class="quick-actions">
                         <img src="{{ asset('images/icon/chat.png') }}" style="height:60px" alt="">
+                        <p>help</p>
                     </a>
-                    <p>help</p>
+
                 </div>
             </div>
 
             <div class="col-12 col-md-3 mb-3">
                 <div class="help-support" style="display: flex; justify-content: center; align-items: center;flex-direction: column;">
-                    <a href="{{ route('pages.contact') }}" style="text-decoration: none;">
+                    <a href="{{ route('pages.contact') }}" class="quick-actions">
                         <img src="{{ asset('images/icon/phone.png') }}" style="height:70px" alt="">
-                    
-                    <p>contact us</p>
+                        <p>contact us</p>
                     </a>
                 </div>
             </div>
