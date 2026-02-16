@@ -31,9 +31,14 @@ Route::get('services', function () {
 
 
 // admin panel routes
-Route::resource('admin', AdminController::class);
-Route::resource('addProducts', ProductController::class);
-Route::resource('adminOrder', OrderController::class);
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    Route::resource('admin', AdminController::class);
+    Route::resource('addProducts', ProductController::class);
+    Route::resource('adminOrder', OrderController::class);
+
+});
+
 
 
 

@@ -13,8 +13,8 @@ class HomePageController extends Controller
     public function index()
     {
         $mini = Product::where('category', 'Mini Serious')
-            ->latest()           // ORDER BY created_at DESC
-            ->take(4)            // LIMIT 4
+            ->latest()          
+            ->take(4)           
             ->get();
 
         $fpv = Product::where('category', 'FPV')
