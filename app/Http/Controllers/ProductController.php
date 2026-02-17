@@ -147,28 +147,31 @@ class ProductController extends Controller
     return redirect()->route('products.index');
 }
 
+
   
 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $addProduct)
-    {
-        if ($addProduct->aircraft && file_exists(public_path('upload_aircraft/' . $addProduct->aircraft))) {
-            unlink(public_path('upload_aircraft/' . $addProduct->aircraft));
-        }
-
-        if ($addProduct->rc && file_exists(public_path('upload_aircraft/' . $addProduct->rc))) {
-            unlink(public_path('upload_aircraft/' . $addProduct->rc));
-        }
-
-        if ($addProduct->aircraft_with_rc && file_exists(public_path('upload_aircraft/' . $addProduct->aircraft_with_rc))) {
-            unlink(public_path('upload_aircraft/' . $addProduct->aircraft_with_rc));
-        }
-
-        $addProduct->delete();
-
-        return redirect()->route('addProducts.index')->with('success', 'Product deleted successfully.');
+    public function destroy(Product $product)
+{
+    // delete files
+    if ($product->aircraft && file_exists(public_path('upload_aircraft/' . $product->aircraft))) {
+        unlink(public_path('upload_aircraft/' . $product->aircraft));
     }
+
+    if ($product->rc && file_exists(public_path('upload_aircraft/' . $product->rc))) {
+        unlink(public_path('upload_aircraft/' . $product->rc));
+    }
+
+    if ($product->aircraft_with_rc && file_exists(public_path('upload_aircraft/' . $product->aircraft_with_rc))) {
+        unlink(public_path('upload_aircraft/' . $product->aircraft_with_rc));
+    }
+
+    $product->delete();
+
+    return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+}
+
 }

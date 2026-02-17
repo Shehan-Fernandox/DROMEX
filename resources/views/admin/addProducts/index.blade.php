@@ -251,7 +251,7 @@
                                 <div style="display: flex;justify-content: space-between;">
                                     <a href="{{route('products.edit', $product->id)}}" class="btn btn-warning" data-bs-target="#exampleModal" style="width: fit-content;font-weight: bold;">update</a>
                                     <!-- <a href="" class="btn btn-success" style="width: fit-content;font-weight: bold;">view</a> -->
-                                    <form action="{{ route('products.destroy', ['product' => $product->id])" method="POST" onsubmit="return confirm('Are you sure?');">
+                                    <form action="{{ route('products.destroy', ['product' => $product->id])}}" method="POST" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>

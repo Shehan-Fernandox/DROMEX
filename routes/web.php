@@ -34,7 +34,7 @@ Route::get('services', function () {
 Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::resource('admin', AdminController::class);
-    Route::resource('addProducts', ProductController::class);
+    Route::resource('products', ProductController::class);
     Route::resource('adminOrder', OrderController::class);
 
 });
