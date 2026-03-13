@@ -21,7 +21,8 @@ class Order extends Model
     'address',
     'city',
     'province',
-    'zip'
+    'zip',
+    'status'
 ];
 
 }

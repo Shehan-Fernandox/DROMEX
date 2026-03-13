@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_profile', // Add this line to allow mass assignment of user_profile
     ];
 
     /**

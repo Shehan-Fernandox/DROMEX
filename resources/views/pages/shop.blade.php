@@ -116,6 +116,19 @@
 <body>
   @include('layouts.nav')
 
+   <!-- search -->
+    <div class="container mt-5 mb-5">
+        <form method="GET" action="{{ route('pages.shop') }}" class="d-flex">
+            <input
+                type="text"
+                name="search"
+                class="form-control me-2"
+                placeholder="Search product..."
+                value="{{ request('search') }}">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
   <div class="container mt-5">
     <div class="row">
       <div class="col-2 col-md-4" style="align-content: center;">

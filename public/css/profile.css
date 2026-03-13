@@ -1,0 +1,135 @@
+.profile-hero {
+
+    /* background-image: url('../images/backgrounds/comicback.jpg'); */
+    background: linear-gradient(to right, #e9e8e9, #FF9B00);
+    padding: 20px;
+    text-align: center;
+    height: 30vh;
+    object-fit: cover;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-family: "Science Gothic", sans-serif;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: -200px;
+    z-index: 1;
+    position: absolute;
+}
+
+.details-section {
+    background-color: #edededff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
+    height: 250px;
+    margin-top: -120px;
+    border-radius: 30px;
+
+}
+
+.user-info {
+    background-color: #edededff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
+    height: 300px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 2ch;
+
+
+}
+
+.user-info:hover {
+    transition: 0.3s ease;
+    transform: scale(1.1);
+
+}
+
+.user-billing {
+    background-color: #edededff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
+    height: 300px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+}
+
+
+
+.user-info h2 {
+    text-transform: uppercase;
+}
+
+.user-info p {
+    font-weight: bold;
+}
+
+.tiles {
+    background-color: #edededff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
+    height: 120px;
+    width: 120px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   align-content: center;
+   justify-items: center;
+
+}
+
+.tiles p{
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.tiles:hover {
+    transition: 0.3s ease;
+    transform: scale(1.1);
+
+}
+
+.tabs {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 170px;
+}
+
+.tabs a {
+    text-decoration: none;
+    color: #FF9B00;
+    font-size: 20px;
+    background-color: black;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
+}
+
+.order-line{
+    width:100%;
+    height:2px;
+    background-color:#C70039;
+}
+
+.order-text{
+    font-size: 20px;
+    font-weight: bold;
+    color:#C70039;
+}

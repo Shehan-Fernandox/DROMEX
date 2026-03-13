@@ -156,7 +156,7 @@
 <body>
 
     <head>
-        @include('layouts.adminNav') 
+        @include('layouts.adminNav')
     </head>
 
 
@@ -224,6 +224,22 @@
         </div>
     </div>
 
+    <!-- search -->
+    <div class="container mt-5 mb-5">
+        <form method="GET" action="{{ route('products.index') }}" class="d-flex">
+            <input
+                type="text"
+                name="search"
+                class="form-control me-2"
+                placeholder="Search product..."
+                value="{{ request('search') }}">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+
+    <!-- -------------------------- -->
+
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-12 col-md-12">
@@ -240,23 +256,30 @@
                     </thead>
 
                     <tbody>
-                        @foreach($products as $product)
+                        @foreach($productSearch as $product)
                         <tr>
-                            <td><img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" alt="" class="img-fluid" style="width: 200px;height: auto;"></td>
-                            <td>{{$product->product_name}}</td>
-                            <td>{{$product->brand}}</td>
-                            <td>LKR {{$product->product_price}} /=</td>
+                            <td>
+                                <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}"
+                                    class="img-fluid" style="width:200px;height:auto;">
+                            </td>
+                            <td>{{ $product->product_name }}</td>
+                            <td>{{ $product->brand }}</td>
+                            <td>LKR {{ $product->product_price }} /=</td>
 
                             <td>
-                                <div style="display: flex;justify-content: space-between;">
-                                    <a href="{{route('products.edit', $product->id)}}" class="btn btn-warning" data-bs-target="#exampleModal" style="width: fit-content;font-weight: bold;">update</a>
-                                    <!-- <a href="" class="btn btn-success" style="width: fit-content;font-weight: bold;">view</a> -->
-                                    <form action="{{ route('products.destroy', ['product' => $product->id])}}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                <div style="display:flex;justify-content:space-between;">
+                                    <a href="{{ route('products.edit',$product->id) }}"
+                                        class="btn btn-warning" style="font-weight:bold;">
+                                        Update
+                                    </a>
+
+                                    <form action="{{ route('products.destroy',$product->id) }}"
+                                        method="POST"
+                                        onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
-
                                 </div>
                             </td>
                         </tr>

@@ -62,7 +62,7 @@ class OrderController extends Controller
         'zip'            => $request->zip,
     ]);
 
-    return redirect()->back()->with('success', 'Order placed successfully!');
+    return redirect()->route('pages.profile')->with('success', 'Order placed successfully!');
 }
 
 

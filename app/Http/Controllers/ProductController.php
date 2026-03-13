@@ -11,14 +11,32 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        // Search if input exists
+        if ($request->filled('search')) {
+            // Get paginated search results from MeiliSearch / Scout
+            $productSearch = Product::search($request->search)->paginate(5);
+        } else {
+            // Show all products paginated
+            $productSearch = Product::latest()->paginate(5);
+        }
+
+        // Stats for dashboard
         $products = Product::all();
         $product_count = Product::count();
         $total_air_serious = Product::where('category', 'Air Serious')->count();
         $total_mini_serious = Product::where('category', 'Mini Serious')->count();
         $total_fpv = Product::where('category', 'FPV')->count();
-        return view('admin.addProducts.index', compact('products','product_count', 'total_air_serious', 'total_mini_serious', 'total_fpv'));
+
+        return view('admin.addProducts.index', compact(
+            'productSearch',
+            'product_count',
+            'total_air_serious',
+            'total_mini_serious',
+            'total_fpv',
+            'products'
+        ));
     }
 
     /**
@@ -36,7 +54,7 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'product_name' => 'required',
+            'product_name' => 'required|string|max:255|min:5|regex:/^[A-Za-z0-9\s\-]+$/',
             'brand' => 'required',
             'short_description' => 'required',
             'fully_description' => 'required',
@@ -48,6 +66,9 @@ class ProductController extends Controller
             'aircraft' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'rc' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'aircraft_with_rc' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+
+
+
         ]);
 
         $data = $request->all();
@@ -90,88 +111,87 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-   public function update(Request $request, Product $product)
-{
-    $request->validate([
-        'product_name' => 'required|string|max:100|min:2',
-        'brand' => 'required|string|max:50',
-        'short_description' => 'required',
-        'fully_description' => 'required',
-        'stock_quantity' => 'required',
-        'product_weight' => 'required|string',
-        'fly_time' => 'required',
-        'camera_resolution' => 'required',
-        'battery_capacity' => 'required',
-        'aircraft' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        'rc' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        'aircraft_with_rc' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
-    ]);
+    public function update(Request $request, Product $product)
+    {
+        $request->validate([
+            'product_name' => 'required|string|max:100|min:2',
+            'brand' => 'required|string|max:50',
+            'short_description' => 'required',
+            'fully_description' => 'required',
+            'stock_quantity' => 'required',
+            'product_weight' => 'required|string',
+            'fly_time' => 'required',
+            'camera_resolution' => 'required',
+            'battery_capacity' => 'required',
+            'aircraft' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'rc' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'aircraft_with_rc' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+        ]);
 
-    $data = $request->except(['aircraft', 'rc', 'aircraft_with_rc']);
+        $data = $request->except(['aircraft', 'rc', 'aircraft_with_rc']);
 
-    // aircraft
-    if ($request->hasFile('aircraft')) {
-        if ($product->aircraft && file_exists(public_path('upload_aircraft/' . $product->aircraft))) {
-            unlink(public_path('upload_aircraft/' . $product->aircraft));
+        // aircraft
+        if ($request->hasFile('aircraft')) {
+            if ($product->aircraft && file_exists(public_path('upload_aircraft/' . $product->aircraft))) {
+                unlink(public_path('upload_aircraft/' . $product->aircraft));
+            }
+
+            $imageName = time() . '_' . $request->aircraft->getClientOriginalName();
+            $request->aircraft->move(public_path('upload_aircraft'), $imageName);
+            $data['aircraft'] = $imageName;
         }
 
-        $imageName = time() . '_' . $request->aircraft->getClientOriginalName();
-        $request->aircraft->move(public_path('upload_aircraft'), $imageName);
-        $data['aircraft'] = $imageName;
-    }
+        // rc
+        if ($request->hasFile('rc')) {
+            if ($product->rc && file_exists(public_path('upload_aircraft/' . $product->rc))) {
+                unlink(public_path('upload_aircraft/' . $product->rc));
+            }
 
-    // rc
-    if ($request->hasFile('rc')) {
-        if ($product->rc && file_exists(public_path('upload_aircraft/' . $product->rc))) {
-            unlink(public_path('upload_aircraft/' . $product->rc));
+            $rcName = time() . '_' . $request->rc->getClientOriginalName();
+            $request->rc->move(public_path('upload_aircraft'), $rcName);
+            $data['rc'] = $rcName;
         }
 
-        $rcName = time() . '_' . $request->rc->getClientOriginalName();
-        $request->rc->move(public_path('upload_aircraft'), $rcName);
-        $data['rc'] = $rcName;
-    }
+        // aircraft with rc
+        if ($request->hasFile('aircraft_with_rc')) {
+            if ($product->aircraft_with_rc && file_exists(public_path('upload_aircraft/' . $product->aircraft_with_rc))) {
+                unlink(public_path('upload_aircraft/' . $product->aircraft_with_rc));
+            }
 
-    // aircraft with rc
-    if ($request->hasFile('aircraft_with_rc')) {
-        if ($product->aircraft_with_rc && file_exists(public_path('upload_aircraft/' . $product->aircraft_with_rc))) {
-            unlink(public_path('upload_aircraft/' . $product->aircraft_with_rc));
+            $name = time() . '_' . $request->aircraft_with_rc->getClientOriginalName();
+            $request->aircraft_with_rc->move(public_path('upload_aircraft'), $name);
+            $data['aircraft_with_rc'] = $name;
         }
 
-        $name = time() . '_' . $request->aircraft_with_rc->getClientOriginalName();
-        $request->aircraft_with_rc->move(public_path('upload_aircraft'), $name);
-        $data['aircraft_with_rc'] = $name;
+        $product->update($data);
+
+        return redirect()->route('products.index');
     }
 
-    $product->update($data);
-
-    return redirect()->route('products.index');
-}
 
 
-  
 
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Product $product)
-{
-    // delete files
-    if ($product->aircraft && file_exists(public_path('upload_aircraft/' . $product->aircraft))) {
-        unlink(public_path('upload_aircraft/' . $product->aircraft));
+    {
+        // delete files
+        if ($product->aircraft && file_exists(public_path('upload_aircraft/' . $product->aircraft))) {
+            unlink(public_path('upload_aircraft/' . $product->aircraft));
+        }
+
+        if ($product->rc && file_exists(public_path('upload_aircraft/' . $product->rc))) {
+            unlink(public_path('upload_aircraft/' . $product->rc));
+        }
+
+        if ($product->aircraft_with_rc && file_exists(public_path('upload_aircraft/' . $product->aircraft_with_rc))) {
+            unlink(public_path('upload_aircraft/' . $product->aircraft_with_rc));
+        }
+
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
-
-    if ($product->rc && file_exists(public_path('upload_aircraft/' . $product->rc))) {
-        unlink(public_path('upload_aircraft/' . $product->rc));
-    }
-
-    if ($product->aircraft_with_rc && file_exists(public_path('upload_aircraft/' . $product->aircraft_with_rc))) {
-        unlink(public_path('upload_aircraft/' . $product->aircraft_with_rc));
-    }
-
-    $product->delete();
-
-    return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
-}
-
 }

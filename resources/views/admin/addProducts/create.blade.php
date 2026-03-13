@@ -65,6 +65,7 @@
             <div class="col-md-6">
                 <label for="productName" class="form-label">Product Name</label>
                 <input type="text" class="form-control" id="productName" name="product_name">
+                @error('product_name') <p style="color: #ff0000;">{{ $message }}</p> @enderror
             </div>
             <div class="col-md-6">
                 <label for="brand" class="form-label">Product Brand</label>
