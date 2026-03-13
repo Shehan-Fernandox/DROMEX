@@ -134,7 +134,7 @@
 
     @include('layouts.nav')
 
-    <ul class="nav nav-pills mb-3 tabs" id="pills-tab" role="tablist">
+    <ul class="nav nav-pills mb-3 tabs" id="pills-tab" role="tablist" style="margin-top: 60px;">
         <li class="nav-item" role="presentation">
             <button class="nav-link  active tab-button" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" style="border-radius: 50px;border: 2px solid #ff0095;font-weight: bold;text-transform: capitalize;">
                 aircraft
@@ -195,7 +195,7 @@
                 <div class="row">
                     <div class="col-12 col-md-6" style="display: flex;flex-direction: column;justify-content: center;">
                         <div style="display: flex;justify-content: center;">
-                            <img src="{{ asset('upload_aircraft/'.$product->rc) }}" alt="..." class="img-fluid mt-5" style="width: 300px;height:300px;">
+                            <img src="{{ asset('upload_aircraft/'.$product->rc) }}" alt="..." class="img-fluid mt-5" style="width: 400px;height: auto;">
                         </div>
                         <div class="product-name">
                             <div class="line"></div>
@@ -234,8 +234,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-6" style="display: flex;flex-direction: column;justify-content: center;">
-                        <div style="display: flex;justify-content: center;">
-                            <img src="{{ asset('upload_aircraft/'.$product->aircraft_with_rc) }}" alt="..." class="img-fluid mt-5" style="width: 300px;height:300px;">
+                      <div style="display: flex;justify-content: center;">
+                            <img src="{{ asset('upload_aircraft/'.$product->aircraft_with_rc) }}" alt="..." class="img-fluid mt-5" style="width: 400px;height: auto;">
                         </div>
                         <div class="product-name">
                             <div class="line"></div>

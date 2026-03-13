@@ -8,11 +8,16 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LearnMoreController;
 use App\Http\Controllers\MiniSeriousController;
+use App\Http\Controllers\NavController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ViewOrderController;
 use App\Models\Carousel;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 
 
@@ -40,7 +45,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 
+Route::middleware('auth')->group(function () {
 
+Route::get('/profile', [ProfileController::class, 'index'])->name('pages.user_profile');
+
+});
 
 
 
@@ -59,8 +68,8 @@ Route::get('slider', function(){
     return view('pages.slider');
 })->name('pages.slider');
 
-
-
+// order history
+Route::get('profile', [ProfileController::class, 'index'])->name('pages.profile');
 
 
 Auth::routes();
@@ -73,3 +82,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('air_serious', [AirSeriousController::class, 'index'])->name('pages.air_serious');
 Route::get('mini_serious', [MiniSeriousController::class, 'index'])->name('pages.mini_serious');
 Route::get('fpv', [FpvController::class, 'index'])->name('pages.fpv');
+
+
+
+
+
+Route::get('/live-search',[ProductController::class,'liveSearch']);

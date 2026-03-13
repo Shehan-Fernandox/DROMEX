@@ -29,6 +29,8 @@ class HomePageController extends Controller
 
         $allProducts = Product::all();
 
+       
+
         return view('pages.home', compact('mini', 'fpv', 'air', 'allProducts'));
     }
 

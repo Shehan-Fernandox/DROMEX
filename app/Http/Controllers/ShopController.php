@@ -12,12 +12,20 @@ class ShopController extends Controller
      */
    
 
-    public function index()
+    public function index(Request $request)
     {
+         if ($request->filled('search')) {
+            // Get paginated search results from MeiliSearch / Scout
+            $productSearch = Product::search($request->search)->paginate(5);
+        } else {
+            // Show all products paginated
+            $productSearch = Product::latest()->paginate(5);
+        }
+
         $mini = Product::where('category','Mini Serious')->get();
         $fpv = Product::where('category','FPV')->get();
         $air = Product::where('category','Air Serious')->get();
-        return view('pages.shop', compact('mini','fpv','air'));
+        return view('pages.shop', compact('mini','fpv','air','productSearch'));
     }
 
     /**

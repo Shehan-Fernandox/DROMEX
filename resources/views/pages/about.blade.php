@@ -5,150 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-
-        /* html,body{
-            overflow-x: hidden;
-        } */
-
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-            text-transform: capitalize;
-        }
-
-        .about-description {
-            margin-top: 20px;
-
-        }
-
-        .img {
-            background-size: cover;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-        }
-
-        .about-section {
-            margin-top: 50px;
-            background-color: #f5f5f5;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
-            border-radius: 20px;
-            margin: 0;
-            padding: 50px;
-        }
-
-
-        .about-card {
-            height: 130px;
-            width: 130px;
-            background-color: #f5f5f5;
-            margin: 10px;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
-            border-radius: 20px;
-            padding: 0;
-
-        }
-
-        .about-card:hover {
-            transform: scale(1.1);
-            /* animation */
-            transition: transform 0.3s ease;
-            background-color: #FF9B00;
-        }
-
-        /* what we do wesction */
-        .what-do-section {
-            background-color: #f5f5f5;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
-            border-radius: 20px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .what-do {
-            margin-top: 50px;
-
-            max-height: fit-content;
-            max-width: fit-content;
-        }
-
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateX(200px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .what-do p {
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        /* delay for each paragraph */
-        .what-do p:nth-of-type(1) {
-            animation-delay: 0.3s;
-        }
-
-        .what-do p:nth-of-type(2) {
-            animation-delay: 0.6s;
-        }
-
-
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateX(200px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .what-do img {
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        /* delay for each paragraph */
-        .what-do img:nth-of-type(1) {
-            animation-delay: 0.3s;
-        }
-
-        .what-do img:nth-of-type(2) {
-            animation-delay: 0.6s;
-        }
-
-        /* team section */
-        .team-section {
-            background-color: #f5f5f5;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
-            border-radius: 20px;
-            width: 800px;
-            height: 300px;
-        }
-
-        .team-img {
-            background-size: cover;
-            width: 50%;
-            height: 50%;
-            padding: 0;
-            align-content: flex-end;
-        }
-
-       
-       
-        
-    </style>
+      <link rel="stylesheet" href="{{ asset('css/about.css') }}">
 </head>
 
 <body>
@@ -181,9 +38,9 @@
     <div class="container about-section">
         <div class="row" style="justify-items: center;">
             <div class="col-12 col-md-6 p-0">
-                <div class="about p-0">
-                    <img src="{{ asset('images/services/about-us.jpg')}}" alt="" class="img">
-                </div>
+                
+                    <img src="{{ asset('images/services/about-us.png')}}" alt="" class="about-img">
+                
             </div>
 
             <div class="col-12 col-md-6 p-0">
