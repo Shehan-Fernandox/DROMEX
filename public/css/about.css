@@ -9,17 +9,13 @@ h1 {
 
         }
 
-       .about{
-        background-size: cover;
-        height: 610px;
-        width: 570px;
-       }
+       
 
        .about-img {
             background-size: cover;
             width: 100%;
             height: 100%;
-            padding: 0;
+            
         }
 
 

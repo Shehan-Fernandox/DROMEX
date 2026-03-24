@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-      <link rel="stylesheet" href="{{ asset('css/services.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/services.css') }}">
 
 </head>
 
@@ -100,102 +100,27 @@
         </div>
     </div>
 
-    <div class="container mb-5" style="display: flex;justify-content: center;align-items: center;">
-        <div class="row p-0">
-            <div class="col-12 col-md-6 p-0">
-                <div class="recent-events-left">
-                    <h1>coming up next events</h1>
-                    <p>Explore what’s coming up next as we prepare a series of exciting
-                        events designed to inspire, engage, and connect our community.
-                        Stay tuned for updates, announcements, and opportunities to participate
-                        in activities that bring people together and create memorable experiences.</p>
-                    <!-- <img src="{{ asset('images/icon/right.png') }}" alt="..." style="width: 100px;height:100px;"> -->
+    <div class="container mt-5">
+        <h2 class="process-title">our process</h2>
+        <div class="row process">
+            <div class="col-12 col-md-3 services-card-area">
+                <div class="process-card">
+                    skrgh arhd
                 </div>
             </div>
-            <div class="col-12 col-md-6 p-0" style="display: flex;justify-content: flex-end;">
-                <div class="overflow-y-scroll overflow">
-                    <div class="recent-events">
-                        <strong>
-                            <p>recent events</p>
-                        </strong>
-                        <div class="product-line"></div>
-                    </div>
-
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="{{ asset('images/services/duvili.jpg') }}" class="img-fluid rounded-start" alt="..." style="object-fit: cover;height: 100%;">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="{{ asset('images/services/duvili.jpg') }}" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="{{ asset('images/services/duvili.jpg') }}" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="{{ asset('images/services/duvili.jpg') }}" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="{{ asset('images/services/duvili.jpg') }}" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+            <div class="col-12 col-md-3 services-card-area">
+                <div class="process-card">
+                    skrgh arhd
+                </div>
+            </div>
+            <div class="col-12 col-md-3 services-card-area">
+                <div class="process-card">
+                    skrgh arhd
+                </div>
+            </div>
+             <div class="col-12 col-md-3 services-card-area">
+                <div class="process-card">
+                    skrgh arhd
                 </div>
             </div>
         </div>
@@ -203,9 +128,9 @@
 
     <div class="container">
         <h1 class="why-we-are"><strong>w</strong>hy we are special...?</h1>
-    <div class="service-card-section">
-        
-        <div class="row">
+        <div class="service-card-section">
+
+            <div class="row">
                 <div class="col-12 col-md-3 service-card-area">
                     <div class="service-card">
                         <img src="{{ asset('images/icon/shipping-fast.png') }}" style="height:70px" alt="">
@@ -231,15 +156,15 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+
     </div>
-            
-       
-    </div>
 
 
-    
 
- @include('layouts.footer')
+
+    @include('layouts.footer')
 
 </body>
 

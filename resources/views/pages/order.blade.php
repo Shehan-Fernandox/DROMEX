@@ -186,6 +186,12 @@
             /* adjust if needed */
             object-fit: contain;
         }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(1);
+            /* turns white icon to black */
+        }
     </style>
 </head>
 
@@ -204,7 +210,7 @@
                         <h6 class="product-name">{{$product->product_name}}</h6>
                     </div>
                     <div class="learn-more">
-                        <a href="{{ route('products.show', $product->id) }}">
+                        <a href="{{ route('pages.learn-more', $product->id) }}">
                             <h6 class="learn">Learn More</h6>
                         </a>
 
@@ -243,7 +249,7 @@
 
                 <form class="row g-3" method="POST" action="{{route('order.store')}}">
                     @csrf
-                    
+
 
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
 
@@ -255,26 +261,56 @@
                         {{ session('success') }}
                     </div>
                     @endif
+
+
                     <div class="col-md-6">
                         <label for="first_name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name">
+                        <input type="text" class="form-control form-control @error('first_name') is-invalid @enderror" id="first_name" name="first_name" value="{{ old('first_name') }}">
+                        @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+
+                        <!-- Live error -->
+                        <span id="first_nameError" style="color:red;"></span>
                     </div>
+
+
                     <div class="col-md-6">
                         <label for="last_name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name">
+                        <input type="text" class="form-control form-control @error('last_name') is-invalid @enderror" id="last_name" name="last_name" value="{{ old('last_name') }}">
+                        @error('last_name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+
+                        <!-- Live error -->
+                        <span id="last_nameError" style="color:red;"></span>
                     </div>
+
+
                     <div class="col-12">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email">
+                        <input type="email" class="form-control form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                         @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+
+                        <!-- Live error -->
+                        <span id="emailError" style="color:red;"></span>
                     </div>
+
+
                     <div class="col-12">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" placeholder="Apartment, studio, or floor" name="address">
+                        <input type="text" class="form-control form-control @error('address') is-invalid @enderror" id="address" placeholder="Apartment, studio, or floor" name="address" value="{{ old('address') }}">
+                          @error('address')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+
+                        <!-- Live error -->
+                        <span id="addressError" style="color:red;"></span>
                     </div>
-                    <div class="col-md-6">
-                        <label for="city" class="form-label">City</label>
-                        <input type="text" class="form-control" id="city" name="city">
-                    </div>
+
+
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">Province</label>
                         <select id="inputState" class="form-select" name="province">
@@ -289,20 +325,112 @@
                             <option>Uva</option>
                         </select>
                     </div>
-                    <div class="col-md-2">
-                        <label for="inputZip" class="form-label">Zip</label>
-                        <input type="text" class="form-control" id="zip" name="zip">
+
+
+                    <div class="col-md-4">
+                        <label for="city" class="form-label">City</label>
+                        <input type="text" class="form-control form-control @error('city') is-invalid @enderror" id="city" name="city" value="{{ old('city') }}">
                     </div>
 
-                    <div class="col-12" style="display: flex;justify-content: center;">
-                        <button  class=" buy">Place Order</button>
+
+                    
+
+
+                    <div class="col-md-4">
+                        <label for="inputZip" class="form-label">Zip</label>
+                        <input type="text" class="form-control" id="zip" name="zip">
+                         @error('zip')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+
+                        <!-- Live error -->
+                        <span id="zipError" style="color:red;"></span>
                     </div>
+
+
+                    <div class="col-12 mb-5" style="display: flex;justify-content: center;">
+                        <button class=" buy">Place Order</button>
+                    </div>
+
                 </form>
             </div>
         </div>
 
     </div>
-@include('layouts.footer')
+    <script>
+        document.getElementById("first_name").addEventListener("input", function() {
+            let value = this.value;
+            let error = "";
+
+            if (value.trim() === "") {
+                error = "First Name is required";
+            } else if (value.length < 3) {
+                error = "First Name must be at least 3 characters";
+            }
+
+            document.getElementById("first_nameError").innerText = error;
+        });
+
+           document.getElementById("last_name").addEventListener("input", function() {
+            let value = this.value;
+            let error = "";
+
+            if (value.trim() === "") {
+                error = "Last Name is required";
+            } else if (value.length < 5) {
+                error = "Last Name must be at least 5 characters";
+            }
+
+            document.getElementById("last_nameError").innerText = error;
+        });
+
+         document.getElementById("email").addEventListener("input", function() {
+            let value = this.value;
+            let error = "";
+
+            if (value.trim() === "") {
+                error = "Email is required";
+            } else if (!isValidEmail(value)) {
+                error = "Please enter a valid email address";
+            }
+
+            document.getElementById("emailError").innerText = error;
+        });
+
+          document.getElementById("address").addEventListener("input", function() {
+            let value = this.value;
+            let error = "";
+
+            if (value.trim() === "") {
+                error = "Address is required";
+            } else if (value.length < 10) {
+                error = "Address must be at least 10 characters";
+            }
+
+            document.getElementById("addressError").innerText = error;
+        });
+
+        document.getElementById("zip").addEventListener("input", function() {
+            let value = this.value;
+            let error = "";
+
+            if (value.trim() === "") {
+                error = "Zip is required";
+            } else if (value.length < 5) {
+                error = "Zip must be at least 5 characters";
+            }
+
+            document.getElementById("zipError").innerText = error;
+        });
+
+    </script>
+   
+            
+         
+   
+            
+   
+    @include('layouts.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </body>
 

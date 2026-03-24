@@ -1,6 +1,6 @@
 .profile-hero {
 
-    /* background-image: url('../images/backgrounds/comicback.jpg'); */
+    /* background-image: url('../images/backgrounds/shell.png'); */
     background: linear-gradient(to right, #e9e8e9, #FF9B00);
     padding: 20px;
     text-align: center;
@@ -47,7 +47,7 @@
 
 
 }
-
+ 
 .user-info:hover {
     transition: 0.3s ease;
     transform: scale(1.1);
@@ -64,6 +64,7 @@
     align-content: center;
     align-items: center;
 }
+
 
 
 

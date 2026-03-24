@@ -43,7 +43,7 @@
         </div>
     </div>
 
-  
+
 
 
     <div class="container-fluid">
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    
+
 
 
     <div class="container mt-5">
@@ -70,6 +70,8 @@
                     onmouseout="this.style.color='black'; this.style.transform='scale(1)';">
                     Air Serious Drones
                 </h1>
+
+               
             </div>
 
             <div class="col-2 col-md-4" style="align-content: center;">
@@ -91,21 +93,37 @@
             @foreach ($air as $product)
             <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
                 <div class="card" style="width: 18rem;">
-                    
+
                     <div class="card-img">
-                        <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:300px;">
+                        <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:200px;">
                     </div>
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
                         <p class="price">LKR {{$product->product_price}}/=</p>
-                        <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
+
+
+                        <div class="cart">
+                            <a href="{{ route('pages.learn-more', $product->id) }}" class="product-cart">
+                                <i class="bi bi-binoculars"></i>
+                            </a>
+
+                            <a href="#" class="product-cart">
+                                <i class="bi bi-heart"></i>
+                            </a>
+
+                            <a href="{{ route('add.cart',$product->id) }}" class="product-cart">
+                                <i class="bi bi-cart2"></i>
+                            </a>
+                        </div>
+                        <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5;width: 100%;">Buy Now</a>
                         <a href="{{ route('pages.learn-more', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
 
                             <p>learn more</p>
                         </a>
                     </div>
+                    
                 </div>
-            </div>
+               
             @endforeach
 
         </div>
@@ -144,12 +162,25 @@
             <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
                 <div class="card" style="width: 18rem;">
                     <div class="card-img">
-                        <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:300px;">
+                        <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:200px;">
                     </div>
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
                         <p class="price">LKR {{$product->product_price}}/=</p>
-                        <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
+                       <div class="cart">
+                            <a href="{{ route('pages.learn-more', $product->id) }}" class="product-cart">
+                                <i class="bi bi-binoculars"></i>
+                            </a>
+
+                            <a href="#" class="product-cart">
+                                <i class="bi bi-heart"></i>
+                            </a>
+
+                            <a href="{{ route('add.cart',$product->id) }}" class="product-cart">
+                                <i class="bi bi-cart2"></i>
+                            </a>
+                        </div>
+                        <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5;width: 100%;">Buy Now</a>
                         <a href="{{ route('pages.learn-more', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
 
                             <p>learn more</p>
@@ -198,12 +229,25 @@
             <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
                 <div class="card" style="width: 18rem;">
                     <div class="card-img">
-                        <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:300px;">
+                        <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:200px;">
                     </div>
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
                         <p class="price">LKR {{$product->product_price}}/=</p>
-                        <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
+                       <div class="cart">
+                            <a href="{{ route('pages.learn-more', $product->id) }}" class="product-cart">
+                                <i class="bi bi-binoculars"></i>
+                            </a>
+
+                            <a href="#" class="product-cart">
+                                <i class="bi bi-heart"></i>
+                            </a>
+
+                            <a href="{{ route('add.cart',$product->id) }}" class="product-cart">
+                                <i class="bi bi-cart2"></i>
+                            </a>
+                        </div>
+                        <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5;width: 100%;">Buy Now</a>
                         <a href="{{ route('pages.learn-more', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
 
                             <p>learn more</p>
@@ -222,16 +266,16 @@
         <h4 style="font-weight: bold;color:#ff0051ff">What are you looking for?</h4>
         <!-- Horizontal Scroll -->
         <div class="overflow-auto">
-            <div class="d-flex flex-nowrap justify-content-start align-items-center gap-4">
+            <div class="d-flex flex-nowrap justify-content-start align-items-center gap-4" >
 
                 @foreach($allProducts as $product)
 
                 <a href="{{ route('pages.learn-more', $product->id) }}" style="text-decoration: none;color:#ff0051ff;font-size: 20px;">
-                    <div style="height: 200px;width: 200px;">
+                    <div style="height: 200px;width: 200px;display: flex;justify-content: center;align-items: center;flex-direction: column;border: 1px solid #ddd;border-radius: 8px;overflow: hidden;">
                         <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="img-fluid rounded" style="max-width:200px;" alt="">
                     </div>
                     <div>
-                        <p>{{$product->product_name}}</p>
+                        <p style="text-transform: uppercase;">{{$product->product_name}}</p>
                     </div>
 
                 </a>
@@ -289,6 +333,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 

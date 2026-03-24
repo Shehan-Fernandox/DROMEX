@@ -2,41 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
-use App\Models\Product;
+use App\Models\form;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class HomePageController extends Controller
+class FormController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $mini = Product::where('category', 'Mini Serious')
-            ->latest()
-            ->take(4)
-            ->get();
-
-        $fpv = Product::where('category', 'FPV')
-            ->latest()
-            ->take(4)
-            ->get();
-
-        $air = Product::where('category', 'Air Serious')
-            ->latest()
-            ->take(4)
-            ->get();
-
-        $allProducts = Product::all();
-
-        
-       
-
-
-
-        return view('pages.home', compact('mini', 'fpv', 'air', 'allProducts'));
+    return view('pages.form');
     }
 
     /**
@@ -52,7 +28,19 @@ class HomePageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+          $validated = $request->validate([
+        'name' => 'required|string|min:3|max:50',
+        'address' => 'required|string|min:5|max:255',
+    ]);
+
+    // ✅ Save Data
+    form::create([
+        'name' => $validated['name'],
+        'address' => $validated['address'],
+    ]);
+
+    return back()->with('success', 'Form submitted successfully!');
+
     }
 
     /**

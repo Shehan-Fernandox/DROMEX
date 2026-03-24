@@ -89,6 +89,8 @@
         .product-name .name {
             text-align: center;
             text-transform: capitalize;
+            display: flex;
+            align-items: center;
         }
 
         @media (max-width: 575px) {

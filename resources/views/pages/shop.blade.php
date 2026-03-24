@@ -9,10 +9,12 @@
     .card {
       box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
       border-radius: 20px;
-      overflow: hidden;
       text-align: center;
       transition: transform 0.3s ease, background 0.3s ease;
+      position: relative;
+      width: 500px;
 
+      /* IMPORTANT */
     }
 
     .card::before {
@@ -25,70 +27,9 @@
       background: #ff0051ff;
       /* red color */
       clip-path: polygon(0 0, 60% 0, -60% 60%, 0% 0%);
-    }
-
-    .card:hover {
-      transform: scale(1.1);
-      /* animation */
-      transition: transform 0.3s ease;
-      background: linear-gradient(to top, #939393ff, #f5f5f5);
-    }
-
-    .card a {
-
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      width: 200px;
-      position: absolute;
-      margin-top: 50px;
-    }
-
-    .card .learn-more {
-
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      width: 200px;
-      position: absolute;
-      margin-top: 95px;
-    }
-
-    /* Show button when hovered */
-    .card:hover a {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-
-    .card .icon {
-
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      margin-top: -120px;
 
     }
 
-    /* Show button when hovered */
-    .card:hover .icon {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1.1);
-
-    }
-
-    .icon {
-      height: 50px;
-      width: 50px;
-      border-radius: 50%;
-      background: #ff0051ff;
-
-    }
 
 
 
@@ -110,24 +51,45 @@
       color: #ff0051ff;
       font-size: 25px;
     }
+
+    .cart {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #ddddddff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    margin-bottom: 20px;
+
+
+}
+
+
+    .cart i {
+    font-size: 30px;
+    color: #ff0051ff;
+}
+    .product-line {
+      background-color: #ff0051ff;
+      height: 3px;
+    }
   </style>
 </head>
 
 <body>
   @include('layouts.nav')
 
-   <!-- search -->
-    <div class="container mt-5 mb-5">
-        <form method="GET" action="{{ route('pages.shop') }}" class="d-flex">
-            <input
-                type="text"
-                name="search"
-                class="form-control me-2"
-                placeholder="Search product..."
-                value="{{ request('search') }}">
-            <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-    </div>
+  <!-- search -->
+  <div class="container mt-5 mb-5">
+    <form method="GET" action="{{ route('pages.shop') }}" class="d-flex">
+      <input
+        type="text"
+        name="search"
+        class="form-control me-2"
+        placeholder="Search product..."
+        value="{{ request('search') }}">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
 
   <div class="container mt-5">
     <div class="row">
@@ -157,12 +119,25 @@
       <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
         <div class="card" style="width: 18rem;">
           <div class="card-img">
-            <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:300px;">
+            <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:200px;">
           </div>
           <div class="card-body" style="text-align: center;">
             <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
             <p class="price">LKR {{$product->product_price}}/=</p>
-            <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
+            <div class="cart">
+              <a href="{{ route('pages.learn-more', $product->id) }}" class="product-cart">
+                <i class="bi bi-binoculars"></i>
+              </a>
+
+              <a href="#" class="product-cart">
+                <i class="bi bi-heart"></i>
+              </a>
+
+              <a href="{{ route('add.cart',$product->id) }}" class="product-cart">
+                <i class="bi bi-cart2"></i>
+              </a>
+            </div>
+            <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5;width: 100%;">Buy Now</a>
             <a href="{{ route('pages.learn-more', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
 
               <p>learn more</p>
@@ -203,12 +178,25 @@
       <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
         <div class="card" style="width: 18rem;">
           <div class="card-img">
-            <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:300px;">
+            <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:200px;">
           </div>
           <div class="card-body" style="text-align: center;">
             <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
             <p class="price">LKR {{$product->product_price}}/=</p>
-            <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
+            <div class="cart">
+              <a href="{{ route('pages.learn-more', $product->id) }}" class="product-cart">
+                <i class="bi bi-binoculars"></i>
+              </a>
+
+              <a href="#" class="product-cart">
+                <i class="bi bi-heart"></i>
+              </a>
+
+              <a href="{{ route('add.cart',$product->id) }}" class="product-cart">
+                <i class="bi bi-cart2"></i>
+              </a>
+            </div>
+            <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5;width: 100%;">Buy Now</a>
             <a href="{{ route('pages.learn-more', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
 
               <p>learn more</p>
@@ -252,12 +240,25 @@
       <div class="col-12 col-md-3  mb-4" style="justify-items: center;">
         <div class="card" style="width: 18rem;">
           <div class="card-img">
-            <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:300px;">
+            <img src="{{ asset('upload_aircraft/'.$product->aircraft) }}" class="card-img-top img-fluid" alt="..." style="width:auto;height:200px;">
           </div>
           <div class="card-body" style="text-align: center;">
             <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
             <p class="price">LKR {{$product->product_price}}/=</p>
-            <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5">Buy Now</a>
+            <div class="cart">
+              <a href="{{ route('pages.learn-more', $product->id) }}" class="product-cart">
+                <i class="bi bi-binoculars"></i>
+              </a>
+
+              <a href="#" class="product-cart">
+                <i class="bi bi-heart"></i>
+              </a>
+
+              <a href="{{ route('add.cart',$product->id) }}" class="product-cart">
+                <i class="bi bi-cart2"></i>
+              </a>
+            </div>
+            <a href="{{ route('pages.order', $product->id) }}" class="btn buy" style="background-color:#ff0051ff;text-align: center;color:#f5f5f5;width: 100%;">Buy Now</a>
             <a href="{{ route('pages.learn-more', $product->id) }}" class="learn-more" style="text-align: center;color:#ff0051ff;text-decoration: none;">
 
               <p>learn more</p>
@@ -275,7 +276,7 @@
 
 
 
-@include('layouts.footer')
+  @include('layouts.footer')
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

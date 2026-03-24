@@ -11,10 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
 
 
+
+
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 </head>
 
-<body>
+<body class="body">
 
     @include('layouts.nav')
 
@@ -33,13 +35,13 @@
             alt="Profile Picture"
             class="mb-3 profile-picture">
         @else
-        <img src="{{ asset('default-avatar.png') }}"
+        <img src="{{ asset('images/avatar/avater.jpg') }}"
             alt="Default Profile Picture"
             class=" mb-3 profile-picture">
         @endif
     </div>
     <div class="container details-section">
-      
+
 
     </div>
 
@@ -63,7 +65,7 @@
             <div class="col-12 col-md-8">
 
                 <div class="user-billing">
-
+                    <h4>Your Order Status</h4>
                     <div class="tiles">
                         <p>placed orders</p>
                         <p>{{ sprintf('%02d', $placedOrders) }}</p>
@@ -138,7 +140,7 @@
                             <td>
                                 <div style="display:flex;justify-content:space-between;">
                                     <a href=""
-                                        class="btn btn-warning" style="font-weight:bold;">
+                                        class="btn btn-warning " type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"" style=" font-weight:bold;">
                                         View
                                     </a>
 
@@ -163,7 +165,7 @@
     </div>
 
 
-    <!-- @include('layouts.footer') -->
+    @include('layouts.footer')
 </body>
 
 </html>

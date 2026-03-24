@@ -45,7 +45,7 @@
             <h3>dromex</h3>
         </div>
 
-        <div class="col-6 col-md-3 p-0">
+        <div class="col-6 col-md-6 p-0">
             <h4>featured links</h4>
             <p>home</p>
             <p>home</p>
@@ -55,15 +55,7 @@
             <p>home</p>
         </div>
 
-        <div class="col-6 col-md-3 p-0">
-           <h4>quick actions</h4>
-            <p>home</p>
-            <p>home</p>
-            <p>home</p>
-            <p>home</p>
-            <p>home</p>
-            <p>home</p>
-        </div>
+        
 
         <div class="col-6 col-md-3 p-0">
             <h4>contact us</h4>
