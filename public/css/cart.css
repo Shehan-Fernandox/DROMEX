@@ -1,0 +1,51 @@
+
+
+.add-another {
+    background-color: #edededff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
+    height: fit-content;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+
+}
+
+.shopping-text {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+}
+
+.shopping-text h2 {
+    font-size: 30px;
+    font-family: "Science Gothic", sans-serif;
+    text-transform: uppercase;
+    
+}
+
+.shopping-text p{
+   text-align: justify;
+}
+
+
+.continue-shopping {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.continue-shopping a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    
+    
+}
+

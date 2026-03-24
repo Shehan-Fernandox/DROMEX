@@ -28,6 +28,7 @@
         height: 2px;
         background-color: #FF9B00;
         padding: 0;
+        margin-top: -40px;
     }
 
     .nav-bar {
@@ -66,13 +67,35 @@
         position: sticky;
         top: 0;
         z-index: 1000;
-        background-color: #0F0F0F;
+        background-color: #000000;
         padding: 10px;
     }
 
     .navbar-toggler {
         background-color: transparent;
         border: 2px solid #FF9B00;
+    }
+
+    .cart-count {
+        display: inline-block;
+        /* allow width, height, and background to work */
+        width: 20px;
+        /* adjust size */
+        height: 20px;
+        border-radius: 50%;
+        background-color: #ff0000;
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 20px;
+        /* vertically center the number */
+        position: relative;
+        /* optional: for fine-tuning */
+        top: -10px;
+        /* lift it above the icon */
+        left: 5px;
+        /* adjust horizontal position if needed */
     }
 </style>
 
@@ -187,6 +210,16 @@
                             </form>
                         </li>
                         @endguest
+
+                        <li class="nav-item">
+                            <a href="{{ route('pages.cart') }}"
+                                class="nav-link ps-5 pe-5 {{ Request::is('cart') ? 'active' : '' }} ">
+                                <i class="bi bi-cart2" style=" font-size: 20px;"></i><sup class="cart-count">2</sup>
+                            </a>
+                        </li>
+
+
+
 
                     </ul>
                 </div>
