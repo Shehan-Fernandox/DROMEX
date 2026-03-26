@@ -365,6 +365,7 @@ p {
 .services-card-area {
     display: flex;
     justify-content: center;
+    
 }
 
 .process-card {

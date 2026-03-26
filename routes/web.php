@@ -21,7 +21,7 @@ use App\Models\Carousel;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
+ 
 
 
 Route::get('about', function () {
@@ -115,9 +115,16 @@ Route::get('cards', function () {
 // provinces and districts
 Route::get('/location', [LocationController::class, 'index'])->name('pages.location');
 
+
+
 Route::get('/get-districts/{province_id}', 
     [LocationController::class, 'getDistricts']
 )->name('get.districts'); // ✅ FIXED
+
+
+Route::get('/get-districts/{province_id}', 
+    [OrderController::class, 'getDistricts']
+)->name('get.districts');
 
 // live validation
 Route::get('/form',[FormController::class,'index'])->name('pages.form');

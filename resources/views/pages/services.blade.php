@@ -103,24 +103,24 @@
     <div class="container mt-5">
         <h2 class="process-title">our process</h2>
         <div class="row process">
-            <div class="col-12 col-md-3 services-card-area">
+            <div class="col-12 col-md-3 mb-3 services-card-area">
                 <div class="process-card">
-                    skrgh arhd
+                    <h3>Discovery</h3>
                 </div>
             </div>
-            <div class="col-12 col-md-3 services-card-area">
+            <div class="col-12 col-md-3 mb-3 services-card-area">
                 <div class="process-card">
-                    skrgh arhd
+                    <h3>Planning</h3>
                 </div>
             </div>
-            <div class="col-12 col-md-3 services-card-area">
+            <div class="col-12 col-md-3 mb-3 services-card-area">
                 <div class="process-card">
-                    skrgh arhd
+                    <h3>Execution</h3>
                 </div>
             </div>
-             <div class="col-12 col-md-3 services-card-area">
+             <div class="col-12 col-md-3 mb-3 services-card-area">
                 <div class="process-card">
-                    skrgh arhd
+                    <h3>Delivery</h3>
                 </div>
             </div>
         </div>

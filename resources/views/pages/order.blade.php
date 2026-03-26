@@ -290,7 +290,7 @@
                     <div class="col-12">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
-                         @error('email')
+                        @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
 
@@ -302,7 +302,7 @@
                     <div class="col-12">
                         <label for="address" class="form-label">Address</label>
                         <input type="text" class="form-control form-control @error('address') is-invalid @enderror" id="address" placeholder="Apartment, studio, or floor" name="address" value="{{ old('address') }}">
-                          @error('address')
+                        @error('address')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
 
@@ -313,33 +313,31 @@
 
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">Province</label>
-                        <select id="inputState" class="form-select" name="province">
-                            <option selected>Choose...</option>
-                            <option>Central</option>
-                            <option>Eastern</option>
-                            <option>Northern</option>
-                            <option>North Central</option>
-                            <option>North Western</option>
-                            <option>Sabaragamuwa</option>
-                            <option>Southern</option>
-                            <option>Uva</option>
+                        <select id="province" name="province">
+                            <option value="">Select Province</option>
+                            @foreach($provinces as $province)
+                            <option value="{{ $province->id }}">{{ $province->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
 
                     <div class="col-md-4">
                         <label for="city" class="form-label">City</label>
-                        <input type="text" class="form-control form-control @error('city') is-invalid @enderror" id="city" name="city" value="{{ old('city') }}">
+                        <select id="district" name="district">
+                            <option value="">Select District</option>
+                        </select>
+
                     </div>
 
 
-                    
 
 
-                    <div class="col-md-4">
+
+                    <div class="col-md-2">
                         <label for="inputZip" class="form-label">Zip</label>
                         <input type="text" class="form-control" id="zip" name="zip">
-                         @error('zip')
+                        @error('zip')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
 
@@ -357,6 +355,9 @@
         </div>
 
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         document.getElementById("first_name").addEventListener("input", function() {
             let value = this.value;
@@ -364,27 +365,30 @@
 
             if (value.trim() === "") {
                 error = "First Name is required";
-            } else if (value.length < 3) {
-                error = "First Name must be at least 3 characters";
+            } else if (!/^[A-Za-z]+$/.test(value)) {
+                error = "First Name must contain only letters";
+            } else if (value.length < 5) {
+                error = "First Name must be at least 5 characters";
             }
-
             document.getElementById("first_nameError").innerText = error;
         });
 
-           document.getElementById("last_name").addEventListener("input", function() {
+        document.getElementById("last_name").addEventListener("input", function() {
             let value = this.value;
             let error = "";
 
             if (value.trim() === "") {
-                error = "Last Name is required";
+                error = "Last name is required";
+            } else if (!/^[A-Za-z]+$/.test(value)) {
+                error = "First Name must contain only letters";
             } else if (value.length < 5) {
-                error = "Last Name must be at least 5 characters";
+                error = "last name must be at least 5 characters";
             }
 
             document.getElementById("last_nameError").innerText = error;
         });
 
-         document.getElementById("email").addEventListener("input", function() {
+        document.getElementById("email").addEventListener("input", function() {
             let value = this.value;
             let error = "";
 
@@ -397,7 +401,13 @@
             document.getElementById("emailError").innerText = error;
         });
 
-          document.getElementById("address").addEventListener("input", function() {
+        // Email validation function
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+
+        document.getElementById("address").addEventListener("input", function() {
             let value = this.value;
             let error = "";
 
@@ -405,6 +415,12 @@
                 error = "Address is required";
             } else if (value.length < 10) {
                 error = "Address must be at least 10 characters";
+            } else if (value.length > 100) {
+                error = "Address must be less than 100 characters";
+            } else if (!/[a-zA-Z]/.test(value)) {
+                error = "Address must contain letters";
+            } else if (!/[0-9]/.test(value)) {
+                error = "Address should include a number (e.g., house no)";
             }
 
             document.getElementById("addressError").innerText = error;
@@ -422,14 +438,50 @@
 
             document.getElementById("zipError").innerText = error;
         });
-
     </script>
-   
-            
-         
-   
-            
-   
+
+
+
+
+    <script>
+        $(document).ready(function() {
+
+            $('#province').on('change', function() {
+                var province_id = $(this).val();
+                console.log("Province ID:", province_id);
+
+                if (province_id) {
+                    $.ajax({
+                        url: "{{ route('get.districts', ':id') }}".replace(':id', province_id),
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            console.log("Districts:", data);
+
+                            $('#district').empty();
+                            $('#district').append('<option value="">Select District</option>');
+
+                            $.each(data, function(key, value) {
+                                $('#district').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                        },
+                        error: function(error) {
+                            console.log("Error:", error);
+                        }
+                    });
+                } else {
+                    $('#district').empty();
+                }
+            });
+
+        });
+    </script>
+
+
+
+
+
+
     @include('layouts.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </body>

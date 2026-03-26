@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Province;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -13,6 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
+
         $total_orders = Order::count();
         $orders = Order::all();
         return view('admin.adminOrder.index', compact('orders', 'total_orders'));
@@ -29,52 +32,42 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-  public function store(Request $request)
-{
-    // Validate input
-    $request->validate([
-        'product_id' => 'required|exists:products,id',
-        'first_name' => 'required|string|max:255',
-        'last_name'  => 'required|string|max:255',
-        'email'      => 'required|email',
-        'address'    => 'required|string',
-        'city'       => 'required|string',
-        'province'   => 'required|string',
-        'zip'        => 'required|string',
-    ]);
+    public function store(Request $request)
+    {
+      
 
-    // Get product details
-    $product = Product::findOrFail($request->product_id);
+        // Get product details
+        $product = Product::findOrFail($request->product_id);
 
-    // Create order
-    Order::create([
-        'user_id'        => auth()->id(),
-        'product_id'     => $product->id,
-        'product_name'   => $product->product_name,
-        'product_price'  => $product->product_price,
-        'aircraft'  => $product->aircraft, // column name in products table
-        'first_name'     => $request->first_name,
-        'last_name'      => $request->last_name,
-        'email'          => $request->email,
-        'address'        => $request->address,
-        'city'           => $request->city,
-        'province'       => $request->province,
-        'zip'            => $request->zip,
-    ]);
+        // Create order
+        Order::create([
+            'user_id'        => auth()->id(),
+            'product_id'     => $product->id,
+            'product_name'   => $product->product_name,
+            'product_price'  => $product->product_price,
+            'aircraft'  => $product->aircraft, // column name in products table
+            'first_name'     => $request->first_name,
+            'last_name'      => $request->last_name,
+            'email'          => $request->email,
+            'address'        => $request->address,
+            'district'           => $request->district,
+            'province'       => $request->province,
+            'zip'            => $request->zip,
+        ]);
 
-    return redirect()->route('pages.profile')->with('success', 'Order placed successfully!');
-}
+        return redirect()->route('pages.profile')->with('success', 'Order placed successfully!');
+    }
 
 
     /**
      * Display the specified resource.
      */
-     public function show($productId)
+    public function show($productId)
     {
-
+        $provinces = Province::all();
         $product = Product::findOrFail($productId);
 
-        return view('pages.order', compact('product'));
+        return view('pages.order', compact('product', 'provinces'));
     }
 
     /**
@@ -99,5 +92,11 @@ class OrderController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function getDistricts($province_id)
+    {
+        $districts = District::where('province_id', $province_id)->get();
+        return response()->json($districts);
     }
 }

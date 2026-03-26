@@ -19,7 +19,7 @@ class Order extends Model
     'last_name',
     'email',
     'address',
-    'city',
+    'district',
     'province',
     'zip',
     'status'

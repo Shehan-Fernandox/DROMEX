@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->string('address');
-            $table->string('city');
+            
             $table->string('province');
             $table->string('zip');
 
