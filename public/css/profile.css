@@ -55,16 +55,21 @@
 }
 
 .user-billing {
-    background-color: #edededff;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
-    height: 300px;
-    border-radius: 30px;
     display: flex;
-    justify-content: space-evenly;
-    align-content: center;
-    align-items: center;
+    flex-wrap: wrap; /* allows wrapping on small screens */
+    gap: 15px; /* space between tiles */
+    justify-content: center; /* center tiles horizontally */
+   
 }
 
+.user-billing .tiles {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1 1 45%; /* flexible width: grow/shrink with min 45% */
+    min-width: 120px; /* ensure small tiles don’t shrink too much */
+}
 
 
 
@@ -76,20 +81,6 @@
     font-weight: bold;
 }
 
-.tiles {
-    background-color: #edededff;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
-    height: 120px;
-    width: 120px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-   align-content: center;
-   justify-items: center;
-
-}
 
 .tiles p{
     font-weight: bold;
@@ -133,4 +124,30 @@
     font-size: 20px;
     font-weight: bold;
     color:#C70039;
+}
+
+
+
+@media (max-width: 500px) {
+    .user-billing .tiles {
+        flex: 1 1 40%;
+        height: 100px; /* optional: smaller height for mobile */
+    }
+
+    .profile-hero h2{
+        margin-top: -120px;
+    }
+}
+
+
+
+/* Optional styling for mobile card view */
+.mobile-card {
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.mobile-card img {
+    display: block;
+    margin-top: 5px;
 }

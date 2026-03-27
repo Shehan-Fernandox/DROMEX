@@ -10,30 +10,36 @@ use Illuminate\Support\Facades\Auth;
 class CartController extends Controller
 {
 
+public function addToCart($id)
+{
+    $user = Auth::user();
 
-    public function addToCart($id)
-    {
-        $user = Auth::user();
+    // Get the product
+    $product = Product::find($id); // Make sure you have a Product model
 
-
-
-        $cart = Cart::where('user_id', $user->id)
-            ->where('product_id', $id)
-            ->first();
-
-        if ($cart) {
-            $cart->quantity += 1;
-            $cart->save();
-        } else {
-            Cart::create([
-                'user_id' => $user->id,
-                'product_id' => $id,
-                'quantity' => 1
-            ]);
-        }
-
-        return redirect()->back()->with('success', 'Product added to cart');
+    if (!$product) {
+        return redirect()->back()->with('error', 'Product not found');
     }
+
+    // Check if product is already in cart
+    $cart = Cart::where('user_id', $user->id)
+        ->where('product_id', $id)
+        ->first();
+
+    if ($cart) {
+        $cart->quantity += 1;
+        $cart->save();
+    } else {
+        Cart::create([
+            'user_id' => $user->id,
+            'product_id' => $id,
+            'aircraft' => $product->aircraft, // store the actual image path
+            'quantity' => 1
+        ]);
+    }
+
+    return redirect()->back()->with('success', 'Product added to cart');
+}
 
 
 
@@ -51,4 +57,6 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Item removed');
     }
+
+    
 }

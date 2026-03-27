@@ -18,6 +18,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ViewOrderController;
 use App\Models\Carousel;
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -65,6 +66,14 @@ Route::get('/remove-cart/{id}', [CartController::class,'remove'])->name('remove.
 
 });
 
+Route::middleware('auth')->group(function(){
+
+Route::get('profile', [ProfileController::class, 'index'])->name('pages.profile');
+
+Route::get('/my-orders/{order}', [ProfileController::class, 'show'])->name('orders.show');
+
+});
+
 
 
 
@@ -81,18 +90,19 @@ Route::get('order/{productId}', [OrderController::class, 'show'])->name('pages.o
 Route::post('/order/store',[OrderController::class, 'store'])->name('order.store');
 
 
+
 Route::get('learn-more/{productId}', [LearnMoreController::class, 'show'])->name('pages.learn-more');
 
 
 
 
 // order history
-Route::get('profile', [ProfileController::class, 'index'])->name('pages.profile');
+
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 

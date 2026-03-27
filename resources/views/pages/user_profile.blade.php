@@ -47,7 +47,7 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 mb-5">
                 <div class="user-info">
                     <h2>your info</h2>
 
@@ -65,7 +65,7 @@
             <div class="col-12 col-md-8">
 
                 <div class="user-billing">
-                    <h4>Your Order Status</h4>
+                    <!-- <h4>Your Order Status</h4> -->
                     <div class="tiles">
                         <p>placed orders</p>
                         <p>{{ sprintf('%02d', $placedOrders) }}</p>
@@ -114,42 +114,38 @@
 
 
     <div class="container-fluid mt-5">
-        <div class="row">
-            <div class="col-12 col-md-12">
-                <table class="table table-striped" style="vertical-align: middle;">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive d-none d-md-block">
+                <table class="table table-striped align-middle">
                     <thead>
                         <tr>
-                            <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">Order ID</th>
-                            <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">Aircraft</th>
-                            <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">Total Price</th>
-                            <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">Status</th>
-                            <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">Date</th>
-                            <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle; width: 250px;">Action</th>
+                            <th>Order ID</th>
+                            <th>Aircraft</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Action</th>
                         </tr>
-
                     </thead>
-
                     <tbody>
                         @foreach($orders as $order)
                         <tr>
                             <td>#{{ $order->id }}</td>
-                            <td><img src="{{ asset('upload_aircraft/'.$order->aircraft) }}" alt="" class="img-fluid" style="max-width: 100px; height: auto;"></td>
+                            <td>
+                                <img src="{{ asset('upload_aircraft/'.$order->aircraft) }}" 
+                                     alt="" class="img-fluid" style="max-width: 100px;">
+                            </td>
                             <td>{{ $order->product_price }}</td>
                             <td>{{ $order->status }}</td>
                             <td>{{ $order->created_at }}</td>
                             <td>
-                                <div style="display:flex;justify-content:space-between;">
-                                    <a href=""
-                                        class="btn btn-warning " type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"" style=" font-weight:bold;">
-                                        View
-                                    </a>
-
-                                    <form action=""
-                                        method="POST"
-                                        onsubmit="return confirm('Are you sure?');">
+                                <div class="d-flex justify-content-between">
+                                    <a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-warning btn-sm">View</a>
+                                    <form action="" method="POST" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Cancell</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
                                     </form>
                                 </div>
                             </td>
@@ -157,12 +153,32 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
 
+            <!-- Mobile Card View -->
+            <div class="d-block d-md-none">
+                @foreach($orders as $order)
+                <div class="mobile-card mb-3 p-3 border rounded">
+                    <p><strong>Order ID:</strong> #{{ $order->id }}</p>
+                    <p><strong>Aircraft:</strong> <img src="{{ asset('upload_aircraft/'.$order->aircraft) }}" 
+                        alt="" class="img-fluid" style="max-width: 100px;"></p>
+                    <p><strong>Total Price:</strong> {{ $order->product_price }}</p>
+                    <p><strong>Status:</strong> {{ $order->status }}</p>
+                    <p><strong>Date:</strong> {{ $order->created_at }}</p>
+                    <div class="d-flex justify-content-between mt-2">
+                        <a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-warning btn-sm">View</a>
+                        <form action="" method="POST" onsubmit="return confirm('Are you sure?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
-
-
     </div>
+</div>
 
 
     @include('layouts.footer')

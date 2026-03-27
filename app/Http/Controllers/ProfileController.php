@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class ProfileController extends Controller
         $shippedOrders = Order::where('user_id', $user->id)->where('status', 'shipped')->count();
         $deliveredOrders = Order::where('user_id', $user->id)->where('status', 'delivered')->count();
         $placedOrders = Order::where('user_id', $user->id)->count();
-        return view('pages.user_profile', compact('user', 'orders', 'pendingOrders','shippedOrders', 'deliveredOrders', 'placedOrders'));
+        return view('pages.user_profile', compact('user', 'orders', 'pendingOrders', 'shippedOrders', 'deliveredOrders', 'placedOrders'));
     }
     /**
      * Show the form for creating a new resource.
@@ -40,10 +41,11 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show($id)
+{
+    $order = Auth::user()->orders()->findOrFail($id);
+    return view('pages.view_order', compact('order'));
+}
 
     /**
      * Show the form for editing the specified resource.

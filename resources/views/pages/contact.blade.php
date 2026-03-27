@@ -46,7 +46,7 @@
         }
 
         .contact-img {
-            background-image: url('./images/logoImage/dromexlogo.png');
+            background-image: url('./images/logoImage/DROMEXLOGO.jpg');
             width: 300px;
             height: 300px;
             border-radius: 50%;

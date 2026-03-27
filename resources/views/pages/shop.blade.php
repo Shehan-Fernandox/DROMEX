@@ -80,7 +80,7 @@
 
   <!-- search -->
   <div class="container mt-5 mb-5">
-    <form method="GET" action="{{ route('pages.shop') }}" class="d-flex">
+    <form method="GET" action="{{ route('pages.shop') }}" class="d-flex"  style="position: sticky;margin-top:0px;z-index:1;">
       <input
         type="text"
         name="search"

@@ -99,4 +99,5 @@ class OrderController extends Controller
         $districts = District::where('province_id', $province_id)->get();
         return response()->json($districts);
     }
+    
 }

@@ -49,3 +49,33 @@
     
 }
 
+
+@media (max-width: 576px) {
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    table td {
+        display: flex;
+        padding: 5px 0;
+        align-items: center;
+    }
+
+    table td p{
+        font-size: 20px;
+         align-items: center;
+         font-weight: bold;
+    }
+
+    table td p .total{
+        font-size: 30px;
+    }
+}

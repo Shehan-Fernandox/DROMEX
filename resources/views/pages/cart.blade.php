@@ -16,9 +16,10 @@
 
         <h2>Your Cart</h2>
 
-        <table class="table">
+        <table class="table table-responsive">
             <thead>
-                <tr >
+                <tr>
+                    <th>image</th>
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
@@ -39,10 +40,13 @@
                 @endphp
 
                 <tr>
-                    <td>{{ $item->product->product_name }}</td>
-                    <td>${{ $item->product->product_price }}</td>
-                    <td>{{ $item->quantity }}</td>
-                    <td>${{ $total }}</td>
+                    <td style="display: flex;justify-content:center;">
+                        <img src="{{ asset('upload_aircraft/' . $item->aircraft) }}" alt="Product Image" width="100" class="img-fluid">
+                    </td>
+                    <td><p>product name : {{ $item->product->product_name }}</p></td>
+                    <td><p>product price : ${{ $item->product->product_price }}/=</p></td>
+                    <td><p>Quantity : {{ $item->quantity }}</p></td>
+                    <td><p>LKR {{ $total }}/=</p></td>
 
                     <td>
                         <a href="{{ route('remove.cart',$item->id) }}" class="btn btn-danger">Remove</a>
@@ -56,36 +60,34 @@
             </tbody>
         </table>
 
-        <h4>Total : ${{ $grandTotal }}</h4>
+        <h4 style="font-weight: bold;font-size: 40px;">Total : LKR {{ $grandTotal }}/=</h4>
 
     </div>
 
+
+
+
     <div class="container  mb-5" style="margin-top: 100px;">
-        
-            <div class="row add-another">
-                <div class="col-12 col-md-8 shopping-text">
 
-                    
-                        <h2>Add Another Item</h2>
-                        <p>Enhance your shopping experience by exploring more
-                            of our premium products. Discover items that
-                            perfectly complement your current selection and
-                            take advantage of exclusive offers tailored just for you.
-                            Don’t miss the opportunity to find something even
-                            better—continue shopping and build your perfect cart today!
-                        </p>
-                        
-                    
+        <div class="row add-another">
+            <div class="col-12 col-md-8 shopping-text">
 
-                </div>
 
-                <div class="col-12 col-md-4 continue-shopping">
-                    
-                        <a href="{{ route('pages.shop') }}" class="btn btn-success">Continue Shopping</a>
-                    
-                </div>
+                <h2>Add Another Item</h2>
+                <p>do you want add another item your cart
+                </p>
+
+
+
             </div>
-        
+
+            <div class="col-12 col-md-4 continue-shopping">
+
+                <a href="{{ route('pages.shop') }}" class="btn btn-success">Continue Shopping</a>
+
+            </div>
+        </div>
+
 
 
     </div>
