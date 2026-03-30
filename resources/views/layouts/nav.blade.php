@@ -28,7 +28,7 @@
         height: 2px;
         background-color: #FF9B00;
         padding: 0;
-        margin-top: -40px;
+        margin-top: 20px;
     }
 
     .nav-bar {
@@ -78,9 +78,7 @@
 
     .cart-count {
         display: inline-block;
-        /* allow width, height, and background to work */
         width: 20px;
-        /* adjust size */
         height: 20px;
         border-radius: 50%;
         background-color: #ff0000;
@@ -89,17 +87,14 @@
         font-weight: bold;
         text-align: center;
         line-height: 20px;
-        /* vertically center the number */
         position: relative;
-        /* optional: for fine-tuning */
         top: -10px;
-        /* lift it above the icon */
         left: 5px;
-        /* adjust horizontal position if needed */
     }
 </style>
 
 <body>
+    <!-- Navbar Section -->
     <div class="fixed-nav">
         <div class="container text-center">
             <div class="row p-0">
@@ -109,13 +104,12 @@
 
         <div class="line"></div>
 
-        <!-- Corrected Navbar -->
         <nav class="navbar navbar-expand-lg nav-bar">
             <div class="container-fluid nav-logo">
 
                 <img src="{{ asset('images/icon/drone.png') }}"
-                    alt="drone"
-                    style="width:40px; height:40px; margin-right:10px;
+                     alt="drone"
+                     style="width:40px; height:40px; margin-right:10px;
                      filter: invert(53%) sepia(80%) saturate(400%) hue-rotate(30deg);">
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -125,113 +119,97 @@
                 <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: center;">
                     <ul class="navbar-nav" style="font-weight: bolder;">
 
+                        <!-- Main Links -->
                         <li class="nav-item">
                             <a href="{{ route('pages.home') }}"
-                                class="nav-link ps-5 pe-5 {{ Request::is('/') ? 'active' : '' }}">
+                               class="nav-link ps-5 pe-5 {{ request()->routeIs('pages.home') ? 'active' : '' }}">
                                 Home
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a href="{{ route('pages.shop') }}"
-                                class="nav-link ps-5 pe-5 {{ Request::is('shop') ? 'active' : '' }}">
+                               class="nav-link ps-5 pe-5 {{ request()->routeIs('pages.shop') ? 'active' : '' }}">
                                 Shop
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a href="{{ route('pages.services') }}"
-                                class="nav-link ps-5 pe-5 {{ Request::is('services') ? 'active' : '' }}">
+                               class="nav-link ps-5 pe-5 {{ request()->routeIs('pages.services') ? 'active' : '' }}">
                                 Services
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a href="{{ route('pages.about') }}"
-                                class="nav-link ps-5 pe-5 {{ Request::is('about') ? 'active' : '' }}">
+                               class="nav-link ps-5 pe-5 {{ request()->routeIs('pages.about') ? 'active' : '' }}">
                                 About Us
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a href="{{ route('pages.contact') }}"
-                                class="nav-link ps-5 pe-5 {{ Request::is('contact') ? 'active' : '' }}">
+                               class="nav-link ps-5 pe-5 {{ request()->routeIs('pages.contact') ? 'active' : '' }}">
                                 Contact Us
                             </a>
                         </li>
 
-
-
-
-
-                        <!-- Corrected Login & Register Section -->
+                        <!-- Auth Links -->
                         @guest
-                        @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link ps-5 pe-5" href="{{ route('login') }}">Login</a>
-                        </li>
-                        @endif
-
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link ps-5 pe-5" href="{{ route('register') }}">Register</a>
-                        </li>
-                        @endif
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link ps-5 pe-5" href="{{ route('login') }}">Login</a>
+                                </li>
+                            @endif
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link ps-5 pe-5" href="{{ route('register') }}">Register</a>
+                                </li>
+                            @endif
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle ps-5 pe-5"
-                                role="button"
-                                data-bs-toggle="dropdown">
+                            <li class="nav-item dropdown">
+                                <a  class="nav-link dropdown-toggle ps-5 pe-5"
+                                   href="#" role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </a>
 
-                                {{ Auth::user()->name }}
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item {{ request()->routeIs('pages.profile') ? 'active' : '' }}"
+                                           href="{{ route('pages.profile') }}">
+                                           <i class="bi bi-person"></i> Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                           Logout
+                                        </a>
+                                    </li>
+                                </ul>
 
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-end">
-
-                                <li>
-                                    <a class="dropdown-item nav-link ps-5 pe-5 {{ Request::is('profile') ? 'active' : '' }}" href="{{ route('pages.profile') }}">
-                                        <i class="bi bi-person"></i> Profile
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-                                </li>
-
-                            </ul>
-
-                            <form id="logout-form" action="{{ route('logout') }}"
-                                method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
                         @endguest
 
+                        <!-- Cart -->
                         <li class="nav-item">
                             <a href="{{ route('pages.cart') }}"
-                                class="nav-link ps-5 pe-5 {{ Request::is('cart') ? 'active' : '' }} ">
-                                <i class="bi bi-cart2" style=" font-size: 20px;"></i><sup class="cart-count">2</sup>
+                               class="nav-link ps-5 pe-5 {{ request()->routeIs('pages.cart') ? 'active' : '' }}">
+                                <i class="bi bi-cart2" style=" font-size: 20px;"></i>
+                                <sup class="cart-count">{{ $cartCount }}</sup>
                             </a>
                         </li>
-
-
-
 
                     </ul>
                 </div>
-
             </div>
         </nav>
     </div>
 
-
-
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>

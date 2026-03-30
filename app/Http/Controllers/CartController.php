@@ -38,7 +38,7 @@ public function addToCart($id)
         ]);
     }
 
-    return redirect()->back()->with('success', 'Product added to cart');
+    return redirect()->route('pages.cart')->with('success', 'Product added to cart');
 }
 
 

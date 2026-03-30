@@ -16,9 +16,13 @@ class OrderController extends Controller
     public function index()
     {
 
+
         $total_orders = Order::count();
+        $pending_orders = Order::where('status', 'Pending')->count();
+        $complete_orders = Order::where('status', 'Complete')->count();
+        $cancelled_orders = Order::where('status', 'Cancelled')->count();
         $orders = Order::all();
-        return view('admin.adminOrder.index', compact('orders', 'total_orders'));
+        return view('admin.adminOrder.index', compact('orders', 'total_orders', 'pending_orders', 'complete_orders', 'cancelled_orders'));
     }
 
     /**
@@ -34,7 +38,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-      
+
 
         // Get product details
         $product = Product::findOrFail($request->product_id);
@@ -73,11 +77,12 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($orderId)
     {
-        //
-    }
+        $order = Order::findOrFail($orderId);
 
+        return view('admin.adminOrder.order_status', compact('order'));
+    }
     /**
      * Update the specified resource in storage.
      */
@@ -99,5 +104,37 @@ class OrderController extends Controller
         $districts = District::where('province_id', $province_id)->get();
         return response()->json($districts);
     }
-    
+
+    public function updateStatus(Request $request, $id)
+    {
+        $order = Order::findOrFail($id);
+
+        $request->validate([
+            'status' => 'required|in:' . implode(',', Order::statuses())
+        ]);
+
+        $order->status = $request->status;
+        $order->save();
+
+        return redirect()->route('adminOrder.index')->with('success', 'Order status updated!');
+    }
+
+    public function cancel(Request $request, $id)
+    {
+        $order = Order::findOrFail($id);
+
+        $request->validate([
+            'cancel_reason' => 'required|string|max:500'
+        ]);
+
+        if ($order->status === Order::STATUS_COMPLETED) {
+            return back()->with('error', 'Completed orders cannot be cancelled.');
+        }
+
+        $order->status = Order::STATUS_CANCELLED;
+        $order->cancel_reason = $request->cancel_reason;
+        $order->save();
+
+        return back()->with('success', 'Order cancelled with reason!');
+    }
 }

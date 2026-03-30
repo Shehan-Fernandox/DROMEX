@@ -80,23 +80,37 @@
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="product-summery-card">
-                        <h5>complete orders</h5>
+                        <h5>complete orders {{$complete_orders}}</h5>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="product-summery-card">
-                        <h5>pending orders</h5>
+                        <h5>pending orders {{$pending_orders}}</h5>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="product-summery-card">
-                        <h5>cancelled orders</h5>
+                        <h5>cancelled orders {{$cancelled_orders}}</h5>
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
+
+    <!-- search -->
+    <div class="container mt-5 mb-5">
+        <form method="GET" action="{{ route('products.index') }}" class="d-flex">
+            <input
+                type="text"
+                name="search"
+                class="form-control me-2"
+                placeholder="Search product..."
+                value="{{ request('search') }}">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
 
 
     <div class="container-fluid">
@@ -119,49 +133,71 @@
         <table class="table table-striped" style="vertical-align: middle;">
             <thead>
                 <tr>
-                    <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">order id</th>
-                    <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">product image</th>
-                    <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">user id</th>
-                    <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">product name</th>
+
+                    <th scope="col" style="background-color: #C70039; height:70px;width:150px; color:white; vertical-align: middle;">product image</th>
+                    <th scope="col" style="background-color: #C70039; height:70px;width:150px; color:white; vertical-align: middle;">product name</th>
                     <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">product price</th>
-                    <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">first name</th>
-                    <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">last name</th>
+                    <th scope="col" style="background-color: #C70039; height:70px;width:150px; color:white; vertical-align: middle;">first name</th>
+                    <th scope="col" style="background-color: #C70039; height:70px; width:150px; color:white; vertical-align: middle;">last name</th>
                     <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">email</th>
                     <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">address</th>
-                    <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">province</th>
-                    <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">city</th>
-                    <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">placed date</th>
-                    
+                    <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">status</th>
+                    <th scope="col" style="background-color: #C70039; height:70px;width:150px; color:white; vertical-align: middle;">placed date</th>
+                    <th scope="col" style="background-color: #C70039; height:70px; color:white; vertical-align: middle;">action</th>
+
                 </tr>
             </thead>
             <tbody>
-                
-            @foreach($orders as $order)
+
+                @foreach($orders as $order)
                 <tr>
-                    <th scope="row">{{ $order->id }}</th>
-                    
+
+
                     <td><img src="{{ asset('upload_aircraft/' . $order->aircraft) }}" alt="Product Image" class="img-fluid" style="width: 150px;height: auto;"></td>
-                    <td>{{ $order->user_id }}</td>
                     <td>{{ $order->product_name }}</td>
                     <td>LKR{{ number_format($order->product_price, 2) }}/=</td>
                     <td>{{ $order->first_name }}</td>
                     <td>{{ $order->last_name }}</td>
                     <td>{{ $order->email }}</td>
                     <td>{{ $order->address }}</td>
-                    <td>{{ $order->province }}</td>
-                    <td>{{ $order->city }}</td>
+                    <td>{{ ucfirst($order->status) }}</td>
+
                     <td style="width:200px;">{{ $order->created_at->format('Y-m-d') }}</td>
-                   
+                    <td>
+                        <div style="display:flex;justify-content:space-between;width:170px;">
+                            <a href="{{ route('adminOrder.edit', $order->id) }}" class="btn btn-warning">
+                                View
+                            </a>
+
+                            <form action="{{ route('admin.orders.cancel', $order->id) }}" method="POST">
+                                @csrf
+                                @method('PATCH')
+
+                                <textarea name="cancel_reason" placeholder="Enter reason..." required></textarea>
+
+                                <button type="submit"
+                                    onclick="return confirm('Cancel this order?')"
+                                    style="background:red; color:white;">
+                                    Cancel Order
+                                </button>
+                            </form>
+                        </div>
+                        <div>
+
+                        </div>
+                    </td>
+
+
                 </tr>
-            @endforeach
+                @endforeach
             </tbody>
         </table>
 
 
-        
+
     </div>
 
-   
+
 </body>
 
 </html>

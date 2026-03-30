@@ -204,7 +204,7 @@ main{
     
   }
 }
-.profile{
+.profile-btn{
   background-color: #FF9B00;
   text-decoration: none;
   width: 130px;
@@ -216,7 +216,7 @@ main{
   color: #ffffff;
 }
 
-.profile:hover{
+.profile-btn:hover{
   background-color: #000;
   color: white;
   transition: ease 0.3s;
@@ -355,7 +355,7 @@ main{
         </div>
         <div class="action">
           
-          <a type="button" class="profile" href="{{ route('pages.profile') }}">Go to profile</a>
+          <a type="button" class="profile-btn" href="{{ route('pages.profile') }}">Go to profile</a>
         </div>
       </div>
     </div>

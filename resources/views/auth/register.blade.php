@@ -1,94 +1,151 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" class="css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" class="css">
+    <style>
+        body {
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-                        @csrf
+            background: linear-gradient(to bottom, #ffffffff, #31a3dcff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+        }
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            width: 70%;
+            align-items: center;
+        }
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+        .register-btn {
+            width: 50%;
+            align-content: center;
+            border-radius: 20px;
+        }
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+        .form {
+            align-content: center;
+        }
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #0063afff;
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+        }
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+        .img {
+            border-radius: 0 50px 0 50px;
+        }
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+        @media (max-width: 768px) {
+            .form-container {
+                width: 90%;
+                margin-top: 150px;
+            }
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+        }
+    </style>
+</head>
 
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+<body>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="user_profile" class="col-md-4 col-form-label text-md-end">{{ __('Profile Picture') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="user_profile" type="file" class="form-control @error('user_profile') is-invalid @enderror" name="user_profile" accept="image/*">
-
-                                @error('user_profile')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+    <div class="row form-container">
+        <div class="col-12 col-md-6">
+            <div style="justify-items: center;">
+                <img src="{{ asset('images/logoImage/DROMEXLOGO.jpg') }}" alt="" class="img-fluid img">
+                <!-- <div class="left-side"  style="justify-items: center;align-content:center;"><h1>ACCIMT</h1></div> -->
             </div>
         </div>
+        <div class="col-12 col-md-6 form">
+            <h2>Register now</h2>
+            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                @csrf
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Password</label>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Confirm Password</label>
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Contact No</label>
+                    <input id="contact_no" type="text" class="form-control @error('email') is-invalid @enderror" name="contact_no" value="{{ old('phone_no') }}" required autocomplete="phone_no">
+                    @error('contact_no')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $contact_no }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="profile" class="form-label">Profile</label>
+                    <input id="user_profile" type="file" class="form-control @error('email') is-invalid @enderror" name="user_profile" value="{{ old('profile') }}" required autocomplete="profile">
+                    @error('user_profile')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $user_profile }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+
+                <div class="mb-0 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary register-btn">
+                        Register
+                    </button>
+                </div>
+                <div class="col-12 mt-3">
+                    <p>
+                        Already have an account? <a href="{{ route('login') }}" style="text-decoration: none;">Login here</a>
+                    </p>
+                </div>
+
+            </form>
+        </div>
     </div>
-</div>
-@endsection
+
+</body>
+
+</html>

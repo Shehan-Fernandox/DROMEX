@@ -22,7 +22,7 @@ use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
- 
+
 
 
 Route::get('about', function () {
@@ -45,33 +45,29 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('admin', AdminController::class);
     Route::resource('products', ProductController::class);
     Route::resource('adminOrder', OrderController::class);
-
 });
 
 
 Route::middleware('auth')->group(function () {
 
-Route::get('/profile', [ProfileController::class, 'index'])->name('pages.user_profile');
-
+    Route::get('/profile', [ProfileController::class, 'index'])->name('pages.user_profile');
 });
 
 // cart routes
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
 
-Route::get('/cart', [CartController::class,'cart'])->name('pages.cart');
+    Route::get('/cart', [CartController::class, 'cart'])->name('pages.cart');
 
-Route::get('/add-to-cart/{id}', [CartController::class,'addToCart'])->name('add.cart');
+    Route::get('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.cart');
 
-Route::get('/remove-cart/{id}', [CartController::class,'remove'])->name('remove.cart');
-
+    Route::get('/remove-cart/{id}', [CartController::class, 'remove'])->name('remove.cart');
 });
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
 
-Route::get('profile', [ProfileController::class, 'index'])->name('pages.profile');
+    Route::get('profile', [ProfileController::class, 'index'])->name('pages.profile');
 
-Route::get('/my-orders/{order}', [ProfileController::class, 'show'])->name('orders.show');
-
+    Route::get('/my-orders/{order}', [ProfileController::class, 'show'])->name('orders.show');
 });
 
 
@@ -87,9 +83,17 @@ Route::get('nav', [NavController::class, 'index'])->name('layouts.nav');
 
 Route::get('order/{productId}', [OrderController::class, 'show'])->name('pages.order')->middleware('auth');
 
-Route::post('/order/store',[OrderController::class, 'store'])->name('order.store');
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+Route::patch(
+    '/admin/orders/{id}/status',
+    [OrderController::class, 'updateStatus']
+)->name('admin.orders.updateStatus');
 
 
+// cancell orders
+Route::patch('/admin/orders/{id}/cancel', 
+    [OrderController::class, 'cancel']
+)->name('admin.orders.cancel');
 
 Route::get('learn-more/{productId}', [LearnMoreController::class, 'show'])->name('pages.learn-more');
 
@@ -115,7 +119,7 @@ Route::get('fpv', [FpvController::class, 'index'])->name('pages.fpv');
 
 
 
-Route::get('/live-search',[ProductController::class,'liveSearch']);
+Route::get('/live-search', [ProductController::class, 'liveSearch']);
 
 
 Route::get('cards', function () {
@@ -127,15 +131,17 @@ Route::get('/location', [LocationController::class, 'index'])->name('pages.locat
 
 
 
-Route::get('/get-districts/{province_id}', 
+Route::get(
+    '/get-districts/{province_id}',
     [LocationController::class, 'getDistricts']
 )->name('get.districts'); // ✅ FIXED
 
 
-Route::get('/get-districts/{province_id}', 
+Route::get(
+    '/get-districts/{province_id}',
     [OrderController::class, 'getDistricts']
 )->name('get.districts');
 
 // live validation
-Route::get('/form',[FormController::class,'index'])->name('pages.form');
-Route::post('/form',[FormController::class,'store'])->name('pages.form');
+Route::get('/form', [FormController::class, 'index'])->name('pages.form');
+Route::post('/form', [FormController::class, 'store'])->name('pages.form');

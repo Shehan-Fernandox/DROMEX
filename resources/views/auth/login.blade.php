@@ -5,116 +5,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" class="css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" class="css">
     <style>
-        .form-section {
-            /* background-color: rgb(247, 247, 247); */
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
-            width: 70vw;
-            height: fit-content;
-            padding: 10px;
-           
-        }
+        body {
 
-        .container{
-             display: flex;
+            background: linear-gradient(to bottom, #ffffffff, #31a3dcff);
+            display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: center;
-            
+            height: 100vh;
+
+
         }
 
-        .form{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 60px;
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            width: 70%;
+            align-items: center;
         }
 
-        .line{
-            background: linear-gradient(to right,#000,#FF9B00);
-            height: 20px;
+        .register-btn {
+            width: 50%;
+            align-content: center;
+            border-radius: 20px;
         }
 
-        .form label{
-            font-size: large;
-            font-family: sans-serif;
+        .form {
+            align-content: center;
         }
 
-        .form-design{
-            /* background: linear-gradient(to bottom,#ffffff,#FF9B00); */
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .form-design h1{
+        h2 {
             text-align: center;
-            font-size: 40px;
-            font-weight: bold;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            color: #FF9B00;
+            color: #0063afff;
         }
 
-        .form-design h5{
-            text-align: center;
-            font-weight: bold;
-            text-transform: capitalize;
-            color: white;
+        .img{
+            border-radius: 0 50px 0 50px;
         }
-
-     .form-design img{
-background-size: cover;
-height: fit-content;
-     }
-
-        
+        @media (max-width: 768px) {
+            .form-container {
+                width: 90%;
+                height: 80%;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="container mt-5">
-        <div class="row  form-section">
-            <div class="col-12 col-md-6  mb-3 form-design">
-                <img src="{{ asset('images/logoimage/DROMEX.png') }}" alt="" class="img-fluid">
-                <h1>welcome back</h1>
-                <h5>enter your details access your account</h5>
-            </div>
-            <div class="col-12 col-md-6 form">
-
-            <div class="line"></div>
-
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-
-                <div class="line"></div>
-
+    <div class="row form-container">
+        <div class="col-12 col-md-6">
+            <div style="justify-items: center;">
+                <img src="{{ asset('images/logoImage/DROMEXLOGO.jpg') }}" alt="" class="img-fluid img">
+                <!-- <div class="left-side"  style="justify-items: center;align-content:center;"><h1>ACCIMT</h1></div> -->
             </div>
         </div>
-    </div>
+        <div class="col-12 col-md-6 form">
+            <h2>login now</h2>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <div class="col-md-12">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Password</label>
+                    <div class="col-md-12">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+
+
+                <div class="mb-0 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary register-btn">
+                        Log in
+                    </button>
+                </div>
+                <div class="col-12 mt-3">
+                    <p>
+                        Already have not an account? <a href="{{ route('register') }}" style="text-decoration: none;">Register Now</a>
+                    </p>
+                </div>
+
+            </form>
+        </div>
+    </div>
 
 </body>
 

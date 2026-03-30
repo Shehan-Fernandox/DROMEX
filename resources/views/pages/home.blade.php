@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="asset/css/home.css" class="css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
+
+
+
 
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
@@ -71,7 +73,7 @@
                     Air Serious Drones
                 </h1>
 
-               
+
             </div>
 
             <div class="col-2 col-md-4" style="align-content: center;">
@@ -121,12 +123,12 @@
                             <p>learn more</p>
                         </a>
                     </div>
-                    
+
                 </div>
             </div>
-        
-        
-               
+
+
+
             @endforeach
 
         </div>
@@ -170,7 +172,7 @@
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
                         <p class="price">LKR {{$product->product_price}}/=</p>
-                       <div class="cart">
+                        <div class="cart">
                             <a href="{{ route('pages.learn-more', $product->id) }}" class="product-cart">
                                 <i class="bi bi-binoculars"></i>
                             </a>
@@ -237,7 +239,7 @@
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-titles" style="text-transform: capitalize;">{{$product->product_name}}</h5>
                         <p class="price">LKR {{$product->product_price}}/=</p>
-                       <div class="cart">
+                        <div class="cart">
                             <a href="{{ route('pages.learn-more', $product->id) }}" class="product-cart">
                                 <i class="bi bi-binoculars"></i>
                             </a>
@@ -269,7 +271,7 @@
         <h4 style="font-weight: bold;color:#ff0051ff">What are you looking for?</h4>
         <!-- Horizontal Scroll -->
         <div class="overflow-auto">
-            <div class="d-flex flex-nowrap justify-content-start align-items-center gap-4" >
+            <div class="d-flex flex-nowrap justify-content-start align-items-center gap-4">
 
                 @foreach($allProducts as $product)
 
@@ -340,7 +342,7 @@
     </div>
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     @include('layouts.footer')
 </body>
