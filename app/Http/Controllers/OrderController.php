@@ -43,6 +43,19 @@ class OrderController extends Controller
         // Get product details
         $product = Product::findOrFail($request->product_id);
 
+         $request->validate([
+            'first_name' => 'required|string|max:255|min:5|regex:/^[A-Za-z0-9\s\-]+$/',
+            'last_name' => 'required|string|max:255|min:5|regex:/^[A-Za-z0-9\s\-]+$/',
+            'email' => 'required',
+            'address' => 'required',
+            'zip' => 'required',
+           
+
+
+
+        ]);
+
+
         // Create order
         Order::create([
             'user_id'        => auth()->id(),

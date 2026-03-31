@@ -93,6 +93,26 @@
             font-size: 13px;
             color: #777;
         }
+
+        /* REMOVE PADDING ON MOBILE */
+        @media (max-width: 767.98px) {
+            .footer .container-fluid,
+            .footer .row,
+            .footer .col-lg-4,
+            .footer .col-6 {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+
+            .footer {
+                padding-top: 40px;
+                padding-bottom: 20px;
+            }
+
+            .footer .social-icons a {
+                margin-right: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -100,11 +120,11 @@
 
     <!-- FOOTER START -->
     <footer class="footer">
-        <div class="container">
-            <div class="row g-5">
+        <div class="container-fluid">
+            <div class="row g-0">
 
                 <!-- Brand -->
-                <div class="col-lg-4">
+                <div class="col-lg-4 mb-4 mb-lg-0">
                     <div class="footer-logo">Dromex</div>
                     <p class="mt-3">
                         Fly smarter with next-generation drones built for performance,
@@ -121,7 +141,7 @@
                 </div>
 
                 <!-- Company Links -->
-                <div class="col-6 col-lg-2">
+                <div class="col-6 col-lg-2 mb-4 mb-lg-0">
                     <h5>Company</h5>
                     <a href="#">About</a>
                     <a href="#">Careers</a>
@@ -130,7 +150,7 @@
                 </div>
 
                 <!-- Support Links -->
-                <div class="col-6 col-lg-2">
+                <div class="col-6 col-lg-2 mb-4 mb-lg-0">
                     <h5>Support</h5>
                     <a href="#">Help Center</a>
                     <a href="#">Returns</a>

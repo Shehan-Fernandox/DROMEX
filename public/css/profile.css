@@ -27,13 +27,20 @@
 }
 
 .details-section {
-    background-color: #edededff;
+    background-image: url('../images/backgrounds/hextagon.png');
+   background-repeat: no-repeat;
+   background-size: cover;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.633);
     height: 250px;
     margin-top: -120px;
     border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f5f5f5;
 
 }
+
 
 .user-info {
     background-color: #edededff;
@@ -151,3 +158,4 @@
     display: block;
     margin-top: 5px;
 }
+

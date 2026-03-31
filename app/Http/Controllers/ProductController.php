@@ -55,10 +55,11 @@ class ProductController extends Controller
 
         $request->validate([
             'product_name' => 'required|string|max:255|min:5|regex:/^[A-Za-z0-9\s\-]+$/',
-            'brand' => 'required',
-            'short_description' => 'required',
-            'fully_description' => 'required',
-            'stock_quantity' => 'required',
+            'brand' => 'required|string|max:3|min:3|regex:/^[A-Za-z]+$/',
+            'short_description' => 'required|string|max:255|min:5|regex:/^[A-Za-z0-9\s\-]+$/',
+            'fully_description' => 'required|string|max:255|min:5|regex:/^[A-Za-z0-9\s\-]+$/',
+            'product_price' => 'required',
+            'stock_quantity' => 'required|integer|max:3|min:1|regex:/^[0-9]+$/',
             'product_weight' => 'required',
             'fly_time' => 'required',
             'camera_resolution' => 'required',

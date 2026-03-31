@@ -64,54 +64,85 @@
             <h3>add product</h3>
             <div class="col-md-6">
                 <label for="productName" class="form-label">Product Name</label>
-                <input type="text" class="form-control" id="productName" name="product_name">
-                @error('product_name') <p style="color: #ff0000;">{{ $message }}</p> @enderror
+                <input type="text" class="form-control form-control @error('product_name') is-invalid @enderror" id="productName" name="product_name">
+                <!-- @error('product_name') <p style="color: #ff0000;">{{ $message }}</p> @enderror -->
+                   @error('brand')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-md-6">
                 <label for="brand" class="form-label">Product Brand</label>
-                <input type="text" class="form-control" id="brands" name="brand">
+                <input type="text" class="form-control form-control @error('brand') is-invalid @enderror" id="brands" name="brand">
+                @error('brand')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+
             </div>
             <div class="col-md-6">
                 <label for="short" class="form-label">Short Description</label>
-                <input type="text" class="form-control" id="short" name="short_description">
+                <input type="text" class="form-control form-control @error('brand') is-invalid @enderror" id="short" name="short_description">
+                 @error('short_description')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-md-6">
                 <label for="quantity" class="form-label">Stock Quantity</label>
-                <input type="text" class="form-control" id="quantity" name="stock_quantity">
+                <input type="text" class="form-control form-control @error('brand') is-invalid @enderror" id="quantity" name="stock_quantity">
+                 @error('stock_quantity')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-12">
                 <label for="fully" class="form-label">Fully Description</label>
-                <textarea class="form-control" id="fully" name="fully_description" id="" rows="5"></textarea>
+                <textarea class="form-control form-control @error('brand') is-invalid @enderror" id="fully" name="fully_description" id="" rows="5"></textarea>
+                 @error('fully_description')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-md-6">
                 <label for="Price" class="form-label">Price</label>
-                <input type="text" class="form-control" id="Price" name="product_price">
+                <input type="text" class="form-control form-control @error('brand') is-invalid @enderror" id="Price" name="product_price">
+                 @error('product_price')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-md-6">
                 <label for="weight" class="form-label">Weight</label>
-                <input type="text" class="form-control" id="weight" name="product_weight">
+                <input type="text" class="form-control form-control @error('brand') is-invalid @enderror" id="weight" name="product_weight">
+                 @error('product_weight')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-md-6">
                 <label for="fly_time" class="form-label">Max Fly Time</label>
-                <input type="text" class="form-control" name="fly_time">
+                <input type="text" class="form-control form-control @error('brand') is-invalid @enderror" name="fly_time">
+                 @error('fly_time')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-md-6">
                 <label for="resoloution" class="form-label">Camera Resolution</label>
-                <input type="text" class="form-control" id="resoloution" name="camera_resolution">
+                <input type="text" class="form-control form-control @error('brand') is-invalid @enderror" id="resoloution" name="camera_resolution">
+                 @error('camera_resolution')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-md-6">
                 <label for="battery" class="form-label">Battery Capacity</label>
-                <input type="text" class="form-control" id="battery" name="battery_capacity">
+                <input type="text" class="form-control form-control @error('brand') is-invalid @enderror" id="battery" name="battery_capacity">
+                 @error('battery_capacity')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-md-6">
-                        <label for="inputState" class="form-label">Category</label>
-                        <select id="inputState" class="form-select" name="category">
-                            <option selected>Choose...</option>
-                            <option>Mini Serious</option>
-                            <option>FPV</option>
-                            <option>Air Serious</option>
-                        </select>
-                    </div>
+                <label for="inputState" class="form-label">Category</label>
+                <select id="inputState" class="form-select" name="category">
+                    <option selected>Choose...</option>
+                    <option>Mini Serious</option>
+                    <option>FPV</option>
+                    <option>Air Serious</option>
+                </select>
+            </div>
             <div class="col-md-4">
                 <label for="aircraft" class="form-label">Aircraft</label>
                 <input type="file" name="aircraft">
@@ -124,7 +155,7 @@
                 <label for="aircraft_with_rc" class="form-label">Aircraft With RC</label>
                 <input type="file" name="aircraft_with_rc">
             </div>
-           
+
             <div class="col-12">
                 <button type="submit" class="btn" style="width: 200px;border:2px solid #C70039;padding:10px;border-radius: 20px;">Add Aircraft</button>
             </div>

@@ -40,9 +40,17 @@
             class=" mb-3 profile-picture">
         @endif
     </div>
-    <div class="container details-section">
+    <div class="container details-section"   style="display: flex;justify-content: center;align-items: center;">
 
-
+      <div class="row">
+        <div class="col-12 col-md-1"></div>
+        <div class="col-12 col-md-10">
+             <div>
+         <h5 style="text-align: center;margin-top: 70px;">High-performance drones for hobbyists, photographers, and professionals. Find your perfect drone today</h5>
+       </div>
+        </div>
+        <div class="col-12 col-md-1"></div>
+      </div>
     </div>
 
     <div class="container mt-5">
@@ -114,71 +122,71 @@
 
 
     <div class="container-fluid mt-5">
-    <div class="row">
-        <div class="col-12">
-            <div class="table-responsive d-none d-md-block">
-                <table class="table table-striped align-middle">
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Aircraft</th>
-                            <th>Total Price</th>
-                            <th>Status</th>
-                            <th>Date</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($orders as $order)
-                        <tr>
-                            <td>#{{ $order->id }}</td>
-                            <td>
-                                <img src="{{ asset('upload_aircraft/'.$order->aircraft) }}" 
-                                     alt="" class="img-fluid" style="max-width: 100px;">
-                            </td>
-                            <td>{{ $order->product_price }}</td>
-                            <td>{{ $order->status }}</td>
-                            <td>{{ $order->created_at }}</td>
-                            <td>
-                                <div class="d-flex justify-content-between">
-                                    <a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-warning btn-sm">View</a>
-                                    <form action="" method="POST" onsubmit="return confirm('Are you sure?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Mobile Card View -->
-            <div class="d-block d-md-none">
-                @foreach($orders as $order)
-                <div class="mobile-card mb-3 p-3 border rounded">
-                    <p><strong>Order ID:</strong> #{{ $order->id }}</p>
-                    <p><strong>Aircraft:</strong> <img src="{{ asset('upload_aircraft/'.$order->aircraft) }}" 
-                        alt="" class="img-fluid" style="max-width: 100px;"></p>
-                    <p><strong>Total Price:</strong> {{ $order->product_price }}</p>
-                    <p><strong>Status:</strong> {{ $order->status }}</p>
-                    <p><strong>Date:</strong> {{ $order->created_at }}</p>
-                    <div class="d-flex justify-content-between mt-2">
-                        <a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-warning btn-sm">View</a>
-                        <form action="" method="POST" onsubmit="return confirm('Are you sure?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
-                        </form>
-                    </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive d-none d-md-block">
+                    <table class="table table-striped align-middle">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Aircraft</th>
+                                <th>Total Price</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($orders as $order)
+                            <tr>
+                                <td>#{{ $order->id }}</td>
+                                <td>
+                                    <img src="{{ asset('upload_aircraft/'.$order->aircraft) }}"
+                                        alt="" class="img-fluid" style="max-width: 100px;">
+                                </td>
+                                <td>{{ $order->product_price }}</td>
+                                <td>{{ $order->status }}</td>
+                                <td>{{ $order->created_at }}</td>
+                                <td>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-warning btn-sm">View</a>
+                                        <form action="" method="POST" onsubmit="return confirm('Are you sure?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
-                @endforeach
+
+                <!-- Mobile Card View -->
+                <div class="d-block d-md-none">
+                    @foreach($orders as $order)
+                    <div class="mobile-card mb-3 p-3 border rounded">
+                        <p><strong>Order ID:</strong> #{{ $order->id }}</p>
+                        <p><strong>Aircraft:</strong> <img src="{{ asset('upload_aircraft/'.$order->aircraft) }}"
+                                alt="" class="img-fluid" style="max-width: 100px;"></p>
+                        <p><strong>Total Price:</strong> {{ $order->product_price }}</p>
+                        <p><strong>Status:</strong> {{ $order->status }}</p>
+                        <p><strong>Date:</strong> {{ $order->created_at }}</p>
+                        <div class="d-flex justify-content-between mt-2">
+                            <a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-warning btn-sm">View</a>
+                            <form action="" method="POST" onsubmit="return confirm('Are you sure?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
     @include('layouts.footer')

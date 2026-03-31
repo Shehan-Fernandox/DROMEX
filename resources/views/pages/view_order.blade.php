@@ -9,12 +9,15 @@
     @import url('https://fonts.googleapis.com/css?family=Fjalla+One|Montserrat:300,400,700,800|Open+Sans:300');
 
 body {
- 
+ /* background-image: url('../images/backgrounds/comicback.jpg'); */
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center;
 }
+
+
 
 main{
   max-width: 720px;
@@ -204,6 +207,7 @@ main{
     
   }
 }
+
 .profile-btn{
   background-color: #FF9B00;
   text-decoration: none;
@@ -329,10 +333,10 @@ main{
         <div class="half">
           <div class="description">
             <p>Order Id: {{$order->id}}</p>
-            <p>Order Id: {{$order->product_id}}</p>
+            <p>Product Id: {{$order->product_id}}</p>
             <p>Status : {{$order->status}}</p>
             <p>Quantity: {{$order->quantity}}</p>
-            <p>Order Id: {{$order->address}}</p>
+            <p>Address: {{$order->address}}</p>
             
           </div>
           <span class="stock"><i class="fa fa-pen"></i> In stock</span>

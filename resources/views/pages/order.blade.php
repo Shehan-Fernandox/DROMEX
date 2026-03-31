@@ -266,7 +266,7 @@
                     <div class="col-md-6">
                         <label for="first_name" class="form-label">First Name</label>
                         <input type="text" class="form-control form-control @error('first_name') is-invalid @enderror" id="first_name" name="first_name" value="{{ old('first_name') }}">
-                        @error('name')
+                        @error('first_name')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
 
@@ -313,10 +313,10 @@
 
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">Province</label>
-                        <select id="province" name="province">
-                            <option value="">Select Province</option>
+                        <select id="province" name="province" required>
+                            <option value="" required>Select Province</option>
                             @foreach($provinces as $province)
-                            <option value="{{ $province->id }}">{{ $province->name }}</option>
+                            <option value="{{ $province->id }}" required>{{ $province->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -324,8 +324,8 @@
 
                     <div class="col-md-4">
                         <label for="city" class="form-label">City</label>
-                        <select id="district" name="district">
-                            <option value="">Select District</option>
+                        <select id="district" name="district" required>
+                            <option value="" required>Select District</option>
                         </select>
 
                     </div>
